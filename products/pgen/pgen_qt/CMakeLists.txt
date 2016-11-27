@@ -34,6 +34,7 @@ file(GLOB CURR_TARGET_RESOURCES "resx/*.qrc")
 # Add Executable
 #==============================================================================
 add_executable(${CURR_TARGET}
+               ${PLATFORM}
                ${CURR_TARGET_SOURCES}
                ${CURR_TARGET_HEADERS}
                ${CURR_TARGET_FORMS}

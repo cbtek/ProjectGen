@@ -109,6 +109,6 @@ TEST_CASE("Testing StringUtils::eraseFromVector","[utility::StringUtils]")
 
 TEST_CASE("Testing StringUtils::removeNonAlphaNumeric","[utility::StringUtils]")
 {
-    std::string str ="~!@#$%^&T*()_+{}|\"{}|\\:;'\"<,>.?/-=\r\rn\f\t~E!@#$%^&*()_+{}|\"{}|\\:;'\"<,>.?/-=\r\rS\n\fT\t";
+    std::string str ="~!@#$%^&T*()_+{}|\"{}|\\:;'\"<,>.?/-=\r\r\n\f\t~E!@#$%^&*()_+{}|\"{}|\\:;'\"<,>.?/-=\r\rS\n\fT\t";
     REQUIRE(StringUtils::removeNonAlphaNumeric(str) == "TEST");
 }

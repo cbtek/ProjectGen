@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>492</width>
-    <height>592</height>
+    <width>456</width>
+    <height>495</height>
    </rect>
   </property>
   <property name="font">
@@ -120,6 +120,35 @@ QLineEdit
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLineEdit" name="m_txtBrowse">
+           <property name="font">
+            <font>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="placeholderText">
+            <string>Browse for Location</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="m_btnBrowse">
+           <property name="text">
+            <string>...</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
         <widget class="QLineEdit" name="m_txtProjectName">
          <property name="font">
           <font>
@@ -133,27 +162,6 @@ QLineEdit
           <string>Enter Project Name...</string>
          </property>
         </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QLineEdit" name="m_txtBrowse">
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="m_btnBrowse">
-           <property name="text">
-            <string>...</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
        </item>
        <item>
         <widget class="QPushButton" name="m_btnNewExeProject">
@@ -271,9 +279,9 @@ QLineEdit
   </layout>
  </widget>
  <tabstops>
-  <tabstop>m_txtProjectName</tabstop>
-  <tabstop>m_txtBrowse</tabstop>
   <tabstop>m_btnBrowse</tabstop>
+  <tabstop>m_txtBrowse</tabstop>
+  <tabstop>m_txtProjectName</tabstop>
   <tabstop>m_btnNewExeProject</tabstop>
   <tabstop>m_btnNewLibProject</tabstop>
   <tabstop>m_btnQtNewExeProject</tabstop>
