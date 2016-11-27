@@ -10,13 +10,8 @@ set(CURR_TARGET_HEADERS "${CURR_TARGET}_HEADERS")
 
 include_directories(src)
 include_directories(inc)
-include_directories(res)
 
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_AUTOUIC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-find_package(Qt5Widgets REQUIRED)
 
 #==============================================================================
 # Include Source Files
@@ -37,12 +32,12 @@ add_executable(${CURR_TARGET}
 # Add Dependencies
 #==============================================================================
 add_dependencies(${CURR_TARGET}
-				 pgen_utils
+                 pgen_utils
                  common_utils)
 
 #==============================================================================
 # Target Link Libraries
 #==============================================================================
 target_link_libraries(${CURR_TARGET}
-					  pgen_utils
+                      pgen_utils
                       common_utils)

@@ -22,4 +22,7 @@ include_directories("${PROJECT_SOURCE_DIR}/products/pgen")
 add_subdirectory("${PROJECT_SOURCE_DIR}/common/utility")
 add_subdirectory("${PROJECT_SOURCE_DIR}/products/pgen/pgen_utils")
 add_subdirectory("${PROJECT_SOURCE_DIR}/products/pgen/pgen")
-add_subdirectory("${PROJECT_SOURCE_DIR}/products/pgen/pgen_qt")
+
+if (BUILD_PGEN_QT)
+    add_subdirectory("${PROJECT_SOURCE_DIR}/products/pgen/pgen_qt")
+endif()
