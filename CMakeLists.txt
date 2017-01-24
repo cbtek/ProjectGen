@@ -14,8 +14,11 @@ include(${CMAKE_MODULE_PATH}/build.cmake)
 set (ENABLE_COMMON_UTILS_UNIT_TESTS ON)
 
 if (WIN32)
-    set (PLATFORM WIN32)
+    if (BUILD_PGEN_QT)
+        set (PLATFORM WIN32)
+    endif()
 endif()
+
 
 include_directories("${PROJECT_SOURCE_DIR}/common")
 include_directories("${PROJECT_SOURCE_DIR}/products/pgen")

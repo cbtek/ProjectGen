@@ -64,7 +64,7 @@ int main(int argc , char ** argv)
         std::cout << "\t5) BASE  (Top-level CMake for new Code-base)\n";
         std::cout << "------------------------------------\n";
         std::cout << "Example:\n";
-        std::cout << "projectgen -n \"MyProject\" -t \"CPL\" -p \"/home/user/project\"\n";
+        std::cout << "pgen -n \"MyProject\" -t \"CPL\" -p \"/home/user/project\"\n";
         std::cout << "------------------------------------"<<std::endl;
         return 0;
     }
