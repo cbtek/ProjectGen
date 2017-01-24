@@ -57,15 +57,16 @@ void ProjectGen::generate()
         throw InvalidOperationException(EXCEPTION_TAG+"No name was specified for this project!");
     }
 
-    std::string buildCMakePath  = ".pgen_templates/build.cmake";
-    std::string flagsCMakePath  = ".pgen_templates/flags.cmake";
-    std::string cppLibCMakePath = ".pgen_templates/c++_library.cmake";
-    std::string qtLibCMakePath  = ".pgen_templates/qt_library.cmake";
-    std::string cppAppCMakePath = ".pgen_templates/c++_application.cmake";
-    std::string qtAppCMakePath  = ".pgen_templates/qt_application.cmake";
-    std::string cppMainPath     = ".pgen_templates/c++_main.cpp";
-    std::string qtMainPath      = ".pgen_templates/qt_main.cpp";
-    std::string basePath        = ".pgen_templates/base.cmake";
+    std::string appPath         = SystemUtils::getApplicationDirectory();
+    std::string buildCMakePath  = FileUtils::buildFilePath(appPath,".pgen_templates/build.cmake");
+    std::string flagsCMakePath  = FileUtils::buildFilePath(appPath,".pgen_templates/flags.cmake");
+    std::string cppLibCMakePath = FileUtils::buildFilePath(appPath,".pgen_templates/c++_library.cmake");
+    std::string qtLibCMakePath  = FileUtils::buildFilePath(appPath,".pgen_templates/qt_library.cmake");
+    std::string cppAppCMakePath = FileUtils::buildFilePath(appPath,".pgen_templates/c++_application.cmake");
+    std::string qtAppCMakePath  = FileUtils::buildFilePath(appPath,".pgen_templates/qt_application.cmake");
+    std::string cppMainPath     = FileUtils::buildFilePath(appPath,".pgen_templates/c++_main.cpp");
+    std::string qtMainPath      = FileUtils::buildFilePath(appPath,".pgen_templates/qt_main.cpp");
+    std::string basePath        = FileUtils::buildFilePath(appPath,".pgen_templates/base.cmake");
 
         bool hasBaseFiles       =     FileUtils::fileExists(buildCMakePath)
                                    && FileUtils::fileExists(basePath)
