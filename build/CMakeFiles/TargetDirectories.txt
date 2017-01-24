@@ -1,0 +1,14 @@
+C:/Dev/CBTek/cpp/ProjectGen/build/CMakeFiles/edit_cache.dir
+C:/Dev/CBTek/cpp/ProjectGen/build/CMakeFiles/rebuild_cache.dir
+C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/CMakeFiles/common_utils.dir
+C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/CMakeFiles/edit_cache.dir
+C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/CMakeFiles/rebuild_cache.dir
+C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/tests/CMakeFiles/test_common_utils.dir
+C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/tests/CMakeFiles/edit_cache.dir
+C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/tests/CMakeFiles/rebuild_cache.dir
+C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen_utils/CMakeFiles/pgen_utils.dir
+C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen_utils/CMakeFiles/edit_cache.dir
+C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen_utils/CMakeFiles/rebuild_cache.dir
+C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen/CMakeFiles/pgen.dir
+C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen/CMakeFiles/edit_cache.dir
+C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen/CMakeFiles/rebuild_cache.dir

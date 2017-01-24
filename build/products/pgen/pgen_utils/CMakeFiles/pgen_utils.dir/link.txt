@@ -1,0 +1,2 @@
+C:\Dev\tools\mingw64\mingw64\bin\ar.exe qc ..\..\..\..\bin\ProjectGen\release\libpgen_utils.a  CMakeFiles/pgen_utils.dir/src/ProjectGen.cpp.obj
+C:\Dev\tools\mingw64\mingw64\bin\ranlib.exe ..\..\..\..\bin\ProjectGen\release\libpgen_utils.a

@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="ProjectGen"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\tools\;CMake Files\..\..\..\tools\cmake\;CMake Files\..\..\..\tools\cmake\share\;CMake Files\..\..\..\tools\cmake\share\cmake-3.7\;CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\;CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\;CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Platform\;CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Internal\;CMake Files\cmake\;CMake Files\common\;CMake Files\common\utility\;CMake Files\common\utility\tests\;CMake Files\products\;CMake Files\products\pgen\;CMake Files\products\pgen\pgen_utils\;CMake Files\products\pgen\pgen\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Dev/CBTek/cpp/ProjectGen/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Dev/CBTek/cpp/ProjectGen/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Dev/CBTek/cpp/ProjectGen/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="common_utils">
+				<Option output="C:/Dev/CBTek/cpp/ProjectGen/bin/ProjectGen/release/libcommon_utils.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Dev/CBTek/cpp/ProjectGen/build/common/utility"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/build/common/utility"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common/utility"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common/utility/src"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++/backward"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include-fixed"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/Makefile&quot;  VERBOSE=1 common_utils"/>
+					<CompileFile command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="common_utils/fast">
+				<Option output="C:/Dev/CBTek/cpp/ProjectGen/bin/ProjectGen/release/libcommon_utils.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Dev/CBTek/cpp/ProjectGen/build/common/utility"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/build/common/utility"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common/utility"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common/utility/src"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++/backward"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include-fixed"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/Makefile&quot;  VERBOSE=1 common_utils/fast"/>
+					<CompileFile command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_common_utils">
+				<Option output="C:/Dev/CBTek/cpp/ProjectGen/bin/ProjectGen/release/test_common_utils.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Dev/CBTek/cpp/ProjectGen/bin/ProjectGen/release"/>
+				<Option object_output="./"/>
+				<Option type="0"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/tests"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common/utility/tests"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common/utility/src"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common/utility/tests/src"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common/utility/tests/inc"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++/backward"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include-fixed"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/tests/Makefile&quot;  VERBOSE=1 test_common_utils"/>
+					<CompileFile command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/tests/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_common_utils/fast">
+				<Option output="C:/Dev/CBTek/cpp/ProjectGen/bin/ProjectGen/release/test_common_utils.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Dev/CBTek/cpp/ProjectGen/bin/ProjectGen/release"/>
+				<Option object_output="./"/>
+				<Option type="0"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/tests"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common/utility/tests"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common/utility/src"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common/utility/tests/src"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common/utility/tests/inc"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++/backward"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include-fixed"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/tests/Makefile&quot;  VERBOSE=1 test_common_utils/fast"/>
+					<CompileFile command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/tests/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/tests/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/common/utility/tests/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pgen_utils">
+				<Option output="C:/Dev/CBTek/cpp/ProjectGen/bin/ProjectGen/release/libpgen_utils.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen_utils"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen_utils"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen/pgen_utils"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen/pgen_utils/inc"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen/pgen_utils/src"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++/backward"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include-fixed"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen_utils/Makefile&quot;  VERBOSE=1 pgen_utils"/>
+					<CompileFile command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen_utils/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen_utils/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen_utils/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pgen_utils/fast">
+				<Option output="C:/Dev/CBTek/cpp/ProjectGen/bin/ProjectGen/release/libpgen_utils.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen_utils"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen_utils"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen/pgen_utils"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen/pgen_utils/inc"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen/pgen_utils/src"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++/backward"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include-fixed"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen_utils/Makefile&quot;  VERBOSE=1 pgen_utils/fast"/>
+					<CompileFile command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen_utils/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen_utils/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen_utils/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pgen">
+				<Option output="C:/Dev/CBTek/cpp/ProjectGen/bin/ProjectGen/release/pgen.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Dev/CBTek/cpp/ProjectGen/bin/ProjectGen/release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen/pgen"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen/pgen/src"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen/pgen/inc"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++/backward"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include-fixed"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen/Makefile&quot;  VERBOSE=1 pgen"/>
+					<CompileFile command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pgen/fast">
+				<Option output="C:/Dev/CBTek/cpp/ProjectGen/bin/ProjectGen/release/pgen.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Dev/CBTek/cpp/ProjectGen/bin/ProjectGen/release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen/pgen"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/common"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen/pgen/src"/>
+					<Add directory="C:/Dev/CBTek/cpp/ProjectGen/products/pgen/pgen/inc"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include/c++/backward"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/include-fixed"/>
+					<Add directory="C:/Dev/tools/mingw64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/6.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen/Makefile&quot;  VERBOSE=1 pgen/fast"/>
+					<CompileFile command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Dev/tools/mingw64/mingw64/bin/mingw32-make.exe -f &quot;C:/Dev/CBTek/cpp/ProjectGen/build/products/pgen/pgen/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/Color.h">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/ColorFactory.h">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/ColorLoop.h">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/ColorUtils.hpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/DateEntity.h">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/DateTimeUtils.hpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/DateUtils.hpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/Exception.hpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/FileUtils.hpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/Font.h">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/FontFactory.h">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/ObjectList.hpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/ObjectMap.hpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/ParseUtils.hpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/Random.h">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/STLUtils.hpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/StringBuilder.h">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/StringList.h">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/StringUtils.hpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/SystemUtils.hpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/TimeEntity.h">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/TimeUtils.hpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/UtilityCommon.hpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/XMLDataElement.h">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/XMLReader.h">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/XMLStreamWriter.h">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/inc/XMLUtils.h">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/src/Color.cpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/src/ColorFactory.cpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/src/ColorLoop.cpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/src/DateEntity.cpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/src/Font.cpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/src/Random.cpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/src/StringBuilder.cpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/src/StringList.cpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/src/TimeEntity.cpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/src/XMLDataElement.cpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/src/XMLReader.cpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/src/XMLStreamWriter.cpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/src/XMLUtils.cpp">
+			<Option target="common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/tests/src/test_FileUtils.cpp">
+			<Option target="test_common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/tests/src/test_StringUtils.cpp">
+			<Option target="test_common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/tests/src/test_Utility.cpp">
+			<Option target="test_common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/tests/src/test_XMLUtils.cpp">
+			<Option target="test_common_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/products/pgen/pgen/src/main.cpp">
+			<Option target="pgen"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/products/pgen/pgen_utils/inc/ProjectGen.h">
+			<Option target="pgen_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/products/pgen/pgen_utils/src/ProjectGen.cpp">
+			<Option target="pgen_utils"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeMinGWFindMake.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeDetermineSystem.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeSystemSpecificInitialize.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeDetermineCCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeDetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeDetermineCompilerId.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeCompilerIdDetection.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeParseArguments.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeFindBinUtils.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeDetermineCXXCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeDetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeDetermineCompilerId.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeCompilerIdDetection.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeParseArguments.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeFindBinUtils.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeSystemSpecificInformation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeGenericSystem.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeFindCodeBlocks.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeExtraGeneratorDetermineCompilerMacrosAndIncludeDirs.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/ProcessorCount.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeCInformation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeLanguageInformation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeDetermineRCCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeRCInformation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeTestRCCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeCommonLanguageInclude.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeTestCCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeTestCompilerCommon.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeDetermineCompilerABI.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeParseImplicitLinkInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeDetermineCompileFeatures.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeCXXInformation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeLanguageInformation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeCommonLanguageInclude.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeTestCXXCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeTestCompilerCommon.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeDetermineCompilerABI.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeParseImplicitLinkInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/CMakeDetermineCompileFeatures.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/ADSP-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/ARMCC-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/AppleClang-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Clang-DetermineCompilerInternal.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Borland-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Bruce-C-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Clang-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Clang-DetermineCompilerInternal.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Compaq-C-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Cray-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Embarcadero-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Fujitsu-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/GHS-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/GNU-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/HP-C-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/IAR-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Intel-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/MIPSpro-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/MSVC-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/PGI-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/PathScale-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/SCO-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/SDCC-C-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/SunPro-C-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/TI-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Watcom-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/XL-C-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/zOS-C-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/ADSP-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/ARMCC-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/AppleClang-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Clang-DetermineCompilerInternal.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Borland-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Clang-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Clang-DetermineCompilerInternal.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Cray-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Embarcadero-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Fujitsu-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/GHS-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/GNU-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/HP-CXX-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/IAR-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Intel-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/MIPSpro-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/MSVC-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/PGI-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/PathScale-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/SCO-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/TI-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/Watcom-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/XL-CXX-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/GNU-C.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/GNU.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/GNU-C-FeatureTests.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/GNU-C-FeatureTests.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/GNU-C-FeatureTests.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/GNU-CXX.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/GNU.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/GNU-CXX-FeatureTests.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/GNU-CXX-FeatureTests.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Compiler/GNU-CXX-FeatureTests.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Compiler\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Platform/Windows-Determine-CXX.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Platform\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Platform/Windows.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Platform\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Platform/WindowsPaths.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Platform\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Platform/Windows-GNU-C.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Platform\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Platform/Windows-GNU.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Platform\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Platform/Windows-windres.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Platform\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Platform/Windows-GNU-C-ABI.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Platform\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Platform/Windows-GNU-CXX.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Platform\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Platform/Windows-GNU.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Platform\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Platform/Windows-GNU-CXX-ABI.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Platform\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Internal/FeatureTesting.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Internal\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/../../../tools/cmake/share/cmake-3.7/Modules/Internal/FeatureTesting.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\tools\cmake\share\cmake-3.7\Modules\Internal\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/cmake/flags.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/cmake/build.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/cmake/flags.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/cmake/flags.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/cmake/flags.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\common\utility\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/common/utility/tests/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\common\utility\tests\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/products/pgen/pgen_utils/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\products\pgen\pgen_utils\"/>
+		</Unit>
+		<Unit filename="C:/Dev/CBTek/cpp/ProjectGen/products/pgen/pgen/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\products\pgen\pgen\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

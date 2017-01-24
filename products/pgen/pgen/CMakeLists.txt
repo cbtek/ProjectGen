@@ -22,11 +22,19 @@ file(GLOB CURR_TARGET_HEADERS "inc/*.h*")
 #==============================================================================
 # Add Executable
 #==============================================================================
-add_executable(${CURR_TARGET}
-               ${PLATFORM}
-               ${CURR_TARGET_SOURCES}
-               ${CURR_TARGET_HEADERS}
-               )
+
+if (BUILD_PGEN_QT)
+    add_executable(${CURR_TARGET}
+                   ${PLATFORM}
+                   ${CURR_TARGET_SOURCES}
+                   ${CURR_TARGET_HEADERS}
+                   )
+else()
+    add_executable(${CURR_TARGET}
+                   ${CURR_TARGET_SOURCES}
+                   ${CURR_TARGET_HEADERS}
+                   )
+endif()
 
 #==============================================================================
 # Add Dependencies
