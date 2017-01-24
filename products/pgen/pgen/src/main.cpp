@@ -35,12 +35,11 @@ using namespace cbtek::common::utility;
 using namespace cbtek::products::development::projectgen;
 
 int main(int argc , char ** argv)
-{    
+{
     std::string projectType = StringUtils::toUpperTrimmed(StringUtils::getCommandLineArg(argc,argv,"--project-type","-t"));
     std::string projectName = StringUtils::getCommandLineArg(argc,argv,"--project-name","-n");
     std::string projectPath = StringUtils::getCommandLineArg(argc,argv,"--project-path","-p");
     bool showHelp = StringUtils::commandLineArgExists(argc,argv,"--help") || StringUtils::commandLineArgExists(argc,argv,"-h");
-
     if (StringUtils::trimmed(projectName).empty())
     {
         std::cout << "ERROR: No name specified for this project."<<std::endl;
@@ -65,9 +64,8 @@ int main(int argc , char ** argv)
         std::cout << "\t5) BASE  (Top-level CMake for new Code-base)\n";
         std::cout << "------------------------------------\n";
         std::cout << "Example:\n";
-        std::cout << "pgen -n \"MyProject\" -t \"CPL\" -p \"/home/user/project\"\n";
+        std::cout << "projectgen -n \"MyProject\" -t \"CPL\" -p \"/home/user/project\"\n";
         std::cout << "------------------------------------"<<std::endl;
-        std::flush(std::cout);
         return 0;
     }
 
