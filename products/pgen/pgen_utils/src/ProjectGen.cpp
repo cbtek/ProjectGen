@@ -43,8 +43,8 @@ namespace projectgen {
 ProjectGen::ProjectGen(ProjectGenType type,
                        const std::string &name,
                        const std::string &path)
-{
-    m_name=StringUtils::removeNonAlphaNumeric(name);
+{    
+    m_name=FileUtils::getSanitizedPathName(name);
     m_path=FileUtils::buildFilePath(path,m_name);
     m_type=type;
 
@@ -155,7 +155,6 @@ void ProjectGen::generate()
         break;
         case ProjectGenType::QT_APPLICATION:
         {
-
             std::string contents = FileUtils::getFileContents(qtAppCMakePath);
             std::string mainContents = FileUtils::getFileContents(qtMainPath);
             StringUtils::replaceInPlace(contents,"%%PROJECT_NAME%%",m_name);

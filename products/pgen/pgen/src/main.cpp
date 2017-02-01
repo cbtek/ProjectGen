@@ -31,11 +31,12 @@ SOFTWARE.
 
 #include "pgen_utils/inc/ProjectGen.h"
 
+
 using namespace cbtek::common::utility;
 using namespace cbtek::products::development::projectgen;
 
 int main(int argc , char ** argv)
-{
+{        
     std::string projectType = StringUtils::toUpperTrimmed(StringUtils::getCommandLineArg(argc,argv,"--project-type","-t"));
     std::string projectName = StringUtils::getCommandLineArg(argc,argv,"--project-name","-n");
     std::string projectPath = StringUtils::getCommandLineArg(argc,argv,"--project-path","-p");
@@ -65,7 +66,7 @@ int main(int argc , char ** argv)
         std::cout << "------------------------------------\n";
         std::cout << "Example:\n";
         std::cout << "pgen -n \"MyProject\" -t \"CPL\" -p \"/home/user/project\"\n";
-        std::cout << "------------------------------------"<<std::endl;
+        std::cout << "------------------------------------"<<std::endl;             
         return 0;
     }
 
@@ -78,11 +79,11 @@ int main(int argc , char ** argv)
     {
         type = ProjectGenType::CPP_LIBRARY;
     }
-    else if (StringUtils::equals(projectType, "QLA"))
+    else if (StringUtils::equals(projectType, "QTL"))
     {
         type = ProjectGenType::QT_LIBRARY;
     }
-    else if (StringUtils::equals(projectType, "QPA"))
+    else if (StringUtils::equals(projectType, "QTA"))
     {
         type = ProjectGenType::QT_APPLICATION;
     }
