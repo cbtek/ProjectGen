@@ -4,14 +4,21 @@
 
 cmake_minimum_required(VERSION 2.8.12)
 project(ProjectGen)
-set(LIBRARY_TYPE STATIC)
+
 get_filename_component(PROJECT_ROOT ${CMAKE_CURRENT_BINARY_DIR} PATH)
 
 set (CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
 include(${CMAKE_MODULE_PATH}/flags.cmake)
 include(${CMAKE_MODULE_PATH}/build.cmake)
+
+set(LIBRARY_TYPE STATIC)
+
 set (ENABLE_COMMON_UTILS_UNIT_TESTS ON)
+set(ENABLE_PGEN_UTILS_STATIC_LIB ON)
+set(ENABLE_COMMON_UTILS_STATIC_LIB ON)
+
+
 
 if (WIN32)
     if (BUILD_PGEN_QT)
@@ -29,3 +36,5 @@ add_subdirectory("${PROJECT_SOURCE_DIR}/products/pgen/pgen")
 if (BUILD_PGEN_QT)
     add_subdirectory("${PROJECT_SOURCE_DIR}/products/pgen/pgen_qt")
 endif()
+
+

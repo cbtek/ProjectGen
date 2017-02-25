@@ -41,3 +41,11 @@ add_dependencies(${CURR_TARGET}
 target_link_libraries(${CURR_TARGET}
                       pgen_utils
                       common_utils)
+
+
+#==============================================================================
+# Install 
+#==============================================================================
+INSTALL(TARGETS ${CURR_TARGET} RUNTIME DESTINATION bin)
+
+
