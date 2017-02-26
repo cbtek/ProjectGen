@@ -34,12 +34,18 @@ add_custom_command(TARGET ${CURR_TARGET} POST_BUILD
 #==============================================================================
 # Install 
 #==============================================================================
-if (ENABLE_PGEN_UTILS_STATIC_LIB)
-	install(TARGETS ${CURR_TARGET} ARCHIVE DESTINATION lib)
+if (WIN32)
+
 else()
-	install(TARGETS ${CURR_TARGET} LIBRARY DESTINATION lib)
+    if (ENABLE_PGEN_UTILS_STATIC_LIB)
+            install(TARGETS ${CURR_TARGET} ARCHIVE DESTINATION lib)
+    else()
+            install(TARGETS ${CURR_TARGET} LIBRARY DESTINATION lib)
+    endif()
+    install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/.pgen_templates DESTINATION share)
 endif()
 
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/.pgen_templates DESTINATION bin)
+#install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/.pgen_templates DESTINATION $ENV{HOME} PATTERN "*" PERMISSIONS WORLD_READ WORLD_WRITE)
+
 
 

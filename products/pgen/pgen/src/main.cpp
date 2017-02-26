@@ -31,7 +31,6 @@ SOFTWARE.
 
 #include "pgen_utils/inc/ProjectGen.h"
 
-
 using namespace cbtek::common::utility;
 using namespace cbtek::products::development::projectgen;
 
@@ -40,7 +39,10 @@ int main(int argc , char ** argv)
     std::string projectType = StringUtils::toUpperTrimmed(StringUtils::getCommandLineArg(argc,argv,"--project-type","-t"));
     std::string projectName = StringUtils::getCommandLineArg(argc,argv,"--project-name","-n");
     std::string projectPath = StringUtils::getCommandLineArg(argc,argv,"--project-path","-p");
+
     bool showHelp = StringUtils::commandLineArgExists(argc,argv,"--help") || StringUtils::commandLineArgExists(argc,argv,"-h");
+    bool enableLog = StringUtils::commandLineArgExists(argc,argv,"--enable-logging") || StringUtils::commandLineArgExists(argc,argv,"-l");
+
     if (StringUtils::trimmed(projectName).empty())
     {
         std::cout << "ERROR: No name specified for this project."<<std::endl;
@@ -52,10 +54,11 @@ int main(int argc , char ** argv)
         std::cout << "------------------------------------\n";
         std::cout << "ProjectGen Help \n";
         std::cout << "------------------------------------\n";
-        std::cout << "--project-name [-n] <name of project>    (required)\n";\
-        std::cout << "--project-type [-t] <type of project>    (optional, see class types below)\n";
-        std::cout << "--project-path [-p] <path of project>    (optional)\n";
-        std::cout << "--help         [-h]                      (displays this help message)\n";
+        std::cout << "--project-name   [-n] <name of project>    (required)\n";\
+        std::cout << "--project-type   [-t] <type of project>    (optional, see class types below)\n";
+        std::cout << "--project-path   [-p] <path of project>    (optional)\n";
+        std::cout << "--enable-logging [-l]                      (writes log to " +FileUtils::buildFilePath(SystemUtils::getUserHomeDirectory(),".pgen.log")+")\n";
+        std::cout << "--help           [-h]                      (displays this help message)\n";
         std::cout << "------------------------------------\n";
         std::cout << "Valid project-types:\n";
         std::cout << "\t1) CPA   (C++ Application, default)\n";
@@ -92,7 +95,7 @@ int main(int argc , char ** argv)
         type = ProjectGenType::CPP_APPLICATION;
     }
 
-    ProjectGen(type,projectName,projectPath).generate();
+    ProjectGen(type,projectName,projectPath, enableLog).generate();
     return 0;
 }
 

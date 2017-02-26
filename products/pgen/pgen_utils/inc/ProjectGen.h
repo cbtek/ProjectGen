@@ -56,15 +56,31 @@ public:
 
     ProjectGen(ProjectGenType type,
                const std::string & projectName,
-               const std::string & path);
+               const std::string & path,
+               bool enableLog);
 
     void generate();
     //! Destructor
     ~ProjectGen();	
 private:
+
+    bool isValidTemplatePath(const std::string &path);
+    void buildProject();
+    bool m_enableLogging;
+
     ProjectGenType m_type;
     std::string m_name;
     std::string m_path;
+    std::string m_buildCMakePath;
+    std::string m_flagsCMakePath;
+    std::string m_cppLibCMakePath;
+    std::string m_qtLibCMakePath;
+    std::string m_cppAppCMakePath;
+    std::string m_qtAppCMakePath;
+    std::string m_cppMainPath;
+    std::string m_qtMainPath;
+    std::string m_basePath;
+
 };
 }}}}//end namespace
 
