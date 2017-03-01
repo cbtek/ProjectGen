@@ -9,6 +9,7 @@ include_directories(inc)
 include_directories(src)
 
 include(${CMAKE_MODULE_PATH}/flags.cmake)
+include(${CMAKE_MODULE_PATH}/build.cmake)
 
 #==============================================================================
 # Include Source Files

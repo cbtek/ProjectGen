@@ -4,6 +4,7 @@
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CURR_TARGET pgen)
 include(${CMAKE_MODULE_PATH}/flags.cmake)
+include(${CMAKE_MODULE_PATH}/build.cmake)
 
 set(CURR_TARGET_SOURCES "${CURR_TARGET}_SOURCES")
 set(CURR_TARGET_HEADERS "${CURR_TARGET}_HEADERS")
@@ -22,8 +23,7 @@ file(GLOB CURR_TARGET_HEADERS "inc/*.h*")
 #==============================================================================
 # Add Executable
 #==============================================================================
-add_executable(${CURR_TARGET}
-               ${PLATFORM}
+add_executable(${CURR_TARGET}               
                ${CURR_TARGET_SOURCES}
                ${CURR_TARGET_HEADERS}
                )
