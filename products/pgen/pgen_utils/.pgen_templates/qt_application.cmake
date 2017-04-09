@@ -46,16 +46,10 @@ add_executable(${CURR_TARGET}
 #==============================================================================
 # Add Dependencies
 #==============================================================================
-
-qt5_use_modules(${CURR_TARGET}
-                 Widgets)
-
+qt5_use_modules(${CURR_TARGET} Widgets)
 #add_dependencies(${CURR_TARGET} )
 
 #==============================================================================
 # Target Link Libraries
 #==============================================================================
 #target_link_libraries(${CURR_TARGET} Qt5::Widgets)
-
-
-

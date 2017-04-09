@@ -395,6 +395,8 @@ void ProjectGen::buildProject()
             srcPath = FileUtils::buildFilePath(folder,"src");
             incPath = FileUtils::buildFilePath(folder,"inc");
             mainPath = FileUtils::buildFilePath(srcPath,"test_"+m_name+".cpp");
+            FileUtils::createDirectory(srcPath);
+            FileUtils::createDirectory(incPath);
             FileUtils::writeFileContents(cmakePath,contents);
             FileUtils::writeFileContents(mainPath,mainContents);
             s_log << "\tCreating path at \""<<folder<<"\""<<std::endl;

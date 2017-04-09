@@ -1,15 +1,14 @@
 # This file contains compiler flags for different platforms
+if (WIN32)
+    if (MSVC)
 
-if(CMAKE_BUILD_TYPE MATCHES Debug)
-        set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_ROOT}/bin/%%PROJECT_NAME%%/debug")
-        set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_ROOT}/bin/%%PROJECT_NAME%%/debug")
-        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_ROOT}/bin/%%PROJECT_NAME%%/debug")
-elseif(CMAKE_BUILD_TYPE MATCHES Default)
-        set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_ROOT}/bin/%%PROJECT_NAME%%/default")
-        set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_ROOT}/bin/%%PROJECT_NAME%%/default")
-        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_ROOT}/bin/%%PROJECT_NAME%%/default")
+    else()
+        set(CMAKE_CXX_FLAGS_RELEASE "-g -Wl,--no-as-needed -std=c++11 -D_GLIBCXX_USE_CXX11_ABI=0")        
+        set(CMAKE_CXX_FLAGS_DEBUG "-g -Wl,--no-as-needed -std=c++11  -D_GLIBCXX_USE_CXX11_ABI=0")
+    endif()
+
 else()
-        set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_ROOT}/bin/%%PROJECT_NAME%%/release")
-        set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_ROOT}/bin/%%PROJECT_NAME%%/release")
-        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_ROOT}/bin/%%PROJECT_NAME%%/release")
+    set(CMAKE_CXX_FLAGS_RELEASE "-g -Wl,--no-as-needed -std=c++11 -pthread -fPIC -ldl -D_GLIBCXX_USE_CXX11_ABI=0")    
+    set(CMAKE_CXX_FLAGS_DEBUG "-g -Wl,--no-as-needed -std=c++11 -pthread -fPIC -ldl -D_GLIBCXX_USE_CXX11_ABI=0")
 endif()
+

@@ -32,11 +32,9 @@ add_executable(${CURR_TARGET}
 # Add Dependencies
 #==============================================================================
 
-#add_dependencies(${CURR_TARGET}  
-#                                             common_utils )
+#add_dependencies(${CURR_TARGET} common_utils )
 
 #==============================================================================
 # Target Link Libraries
 #==============================================================================
-#target_link_libraries(${CURR_TARGET}
-#                                               common_utils )
+#target_link_libraries(${CURR_TARGET} common_utils )

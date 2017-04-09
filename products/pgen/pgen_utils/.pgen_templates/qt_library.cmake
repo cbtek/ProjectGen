@@ -42,10 +42,7 @@ add_library(${CURR_TARGET}
 #==============================================================================
 # Add Dependencies
 #==============================================================================
-
-qt5_use_modules(${CURR_TARGET}
-                 Widgets)
-
+qt5_use_modules(${CURR_TARGET} Widgets)
 #add_dependencies(${CURR_TARGET} )
 
 
