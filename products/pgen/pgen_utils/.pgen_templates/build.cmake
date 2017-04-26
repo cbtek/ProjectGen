@@ -1,14 +1,10 @@
-# This file contains compiler flags for different platforms
-if (WIN32)
-    if (MSVC)
 
-    else()
-        set(CMAKE_CXX_FLAGS_RELEASE "-g -Wl,--no-as-needed -std=c++11 -D_GLIBCXX_USE_CXX11_ABI=0")        
-        set(CMAKE_CXX_FLAGS_DEBUG "-g -Wl,--no-as-needed -std=c++11  -D_GLIBCXX_USE_CXX11_ABI=0")
-    endif()
-
+if(CMAKE_BUILD_TYPE MATCHES Debug)
+        set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_ROOT}/bin/SourceGen/debug")
+        set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_ROOT}/bin/SourceGen/debug")
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_ROOT}/bin/SourceGen/debug")
 else()
-    set(CMAKE_CXX_FLAGS_RELEASE "-g -Wl,--no-as-needed -std=c++11 -pthread -fPIC -ldl -D_GLIBCXX_USE_CXX11_ABI=0")    
-    set(CMAKE_CXX_FLAGS_DEBUG "-g -Wl,--no-as-needed -std=c++11 -pthread -fPIC -ldl -D_GLIBCXX_USE_CXX11_ABI=0")
+        set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_ROOT}/bin/SourceGen/release")
+        set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_ROOT}/bin/SourceGen/release")
+        set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_ROOT}/bin/SourceGen/release")
 endif()
-
