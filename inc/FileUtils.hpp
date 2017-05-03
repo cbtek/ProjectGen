@@ -483,9 +483,10 @@ inline void getFileEntries(const std::string &dirPath,
 }
 
 /**
- * @brief getRecursiveFolders
- * @param dirPath
- * @param folders
+ * @brief getRecursiveFolders Populate folders with list of
+ * recursive directories located in path at dirPath
+ * @param dirPath Path to the recursive directory folder
+ * @param folders Vector of folder paths
  */
 inline void getRecursiveFolders(const std::string & dirPath,
                                 std::set<std::string> & folders)
@@ -611,7 +612,7 @@ inline void copyFile(const std::string & sourceFile, const std::string & destina
 }
 
 /**
- * @brief remove
+ * @brief deleteFile
  * @param sourceFile
  */
 inline void deleteFile(const std::string & sourceFile)
@@ -644,10 +645,10 @@ inline bool createDirectory(const std::string &dirPath)
 }
 
 /**
- * @brief writeRawContentsToFile
- * @param filePath
- * @param buffer
- * @param bufferSize
+ * @brief writeRawContentsToFile Writes buffer to filePath as binary
+ * @param filePath The path to the file to write
+ * @param buffer The buffer to write
+ * @param bufferSize The size of the buffer to write
  */
 inline void writeRawContentsToFile(const std::string & filePath,const char * buffer, size_t bufferSize)
 {
@@ -672,7 +673,7 @@ inline void renameFile(const std::string &oldFilePath, const std::string &newFil
 }
 
 /**
- * @brief getRandomFolderName
+ * @brief getRandomFolderName Get random name for a folder
  * @param length
  * @return
  */
@@ -921,7 +922,7 @@ inline int deleteFolder(const std::string &dirPath)
 }
 
 /**
- * @brief isDirectoryWritable
+ * @brief isDirectoryWritable Determines if directories at directoryPath
  * @param directoryPath
  * @return
  */
