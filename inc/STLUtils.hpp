@@ -15,9 +15,7 @@
 /// TO REPRODUCE, DISCLOSE OR DISTRIBUTE ITS CONTENTS, OR TO MANUFACTURE, USE, OR SELL ANYTHING THAT IT  MAY DESCRIBE, IN WHOLE OR IN PART.
 ///
 
-
-#ifndef _CBTEK_COMMON_UTILITY_STLUTILS_H
-#define _CBTEK_COMMON_UTILITY_STLUTILS_H
+#pragma once
 
 #include "UtilityCommon.hpp"
 
@@ -41,7 +39,7 @@ namespace STLUtils {
 * @param count Size of array
 * @param precision Number of decimal places to print
 */
-void toStream(std::ostream &out,
+inline void toStream(std::ostream &out,
               double *itemArray,
               size_t count,
               int prec)
@@ -63,7 +61,7 @@ void toStream(std::ostream &out,
 * @param[out] valuesOut Reference to vector of values
 */
 template <typename K,typename V>
-void getMapValues(const std::map<K,V> &sourceMap,
+inline void getMapValues(const std::map<K,V> &sourceMap,
                   std::vector<V> &valuesOut)
 {
     typename std::map<K,V>::const_iterator itBeg = sourceMap.begin();
@@ -82,7 +80,7 @@ void getMapValues(const std::map<K,V> &sourceMap,
 * @param[out] keysOut Reference to vector of keys
 */
 template <typename K,typename V>
-void getMapKeys(const std::map<K,V> &sourceMap,
+inline void getMapKeys(const std::map<K,V> &sourceMap,
                 std::vector<K> &keysOut)
 {
     typename std::map<K,V>::const_iterator itBeg = sourceMap.begin();
@@ -102,7 +100,7 @@ void getMapKeys(const std::map<K,V> &sourceMap,
 * @param[out] valuesOut Reference to vector of values
 */
 template <typename K,typename V>
-void getMapKeysAndValues(const std::map<K,V> &sourceMap,
+inline void getMapKeysAndValues(const std::map<K,V> &sourceMap,
                          std::vector<K> &keysOut,
                          std::vector<V> &valuesOut)
 {
@@ -124,7 +122,7 @@ void getMapKeysAndValues(const std::map<K,V> &sourceMap,
 * @param[out] vectorOut Reference to the vector to be populated
 */
 template <typename T>
-void toVector(const std::set<T> & valueSet,
+inline void toVector(const std::set<T> & valueSet,
               std::vector<T> & vectorOut)
 {
     typename std::set<T>::iterator itBeg = valueSet.begin();
@@ -145,7 +143,7 @@ void toVector(const std::set<T> & valueSet,
 * @param[out] vectorOut Reference to the vector to be populated
 */
 template <typename T>
-void toVector(const std::list<T> & valueList,
+inline void toVector(const std::list<T> & valueList,
               std::vector<T> & vectorOut)
 {
 
@@ -165,7 +163,7 @@ void toVector(const std::list<T> & valueList,
 * @param itemVector Vector to write to stream
 */
 template <typename T>
-void toStream(std::ostream & out,
+inline void toStream(std::ostream & out,
               const std::vector<T> & itemVector)
 {
     typename std::vector<T>::const_iterator itBeg = itemVector.begin();
@@ -187,7 +185,7 @@ void toStream(std::ostream & out,
 * @param itemSet Set to write to stream
 */
 template <typename T>
-void toStream(std::ostream & out,
+inline void toStream(std::ostream & out,
               const std::set<T> & itemSet)
 {
     typename std::set<T>::const_iterator itBeg = itemSet.begin();
@@ -209,7 +207,7 @@ void toStream(std::ostream & out,
 * @param itemMap Map to write to stream
 */
 template <typename K, typename V>
-void toStream(std::ostream & out,
+inline void toStream(std::ostream & out,
               const std::map<K,V> & itemMap)
 {
     typename std::map<K,V>::const_iterator itBeg = itemMap.begin();
@@ -229,7 +227,7 @@ void toStream(std::ostream & out,
 * @param itemList List to write to stream
 */
 template <typename T>
-void toStream(std::ostream & out,
+inline void toStream(std::ostream & out,
               const std::list<T> & itemList)
 {
     typename std::list<T>::const_iterator itBeg = itemList.begin();
@@ -244,8 +242,4 @@ void toStream(std::ostream & out,
         ++count;
     }
 }
-
 }}}}//end namespace
-
-#endif
-
