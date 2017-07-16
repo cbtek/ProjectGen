@@ -28,35 +28,43 @@ namespace cbtek {
 namespace common {
 namespace utility {
 
-Random::Random(long seed) : m_ix(9123),m_iy(8844),m_iz(20846)
+Random::Random(unsigned int seed)
 {
-    reseed(seed);
-    m_mx=1/30269.0;m_my=1/30307.0;m_mz=1/30323.0;
+    reseed(seed);    
 }
 
-void Random::reseed(long seed)
+void Random::reseed(unsigned int seed)
 {
-    srand(seed);
-    m_ix=rand();
-    m_iy=rand();
-    m_iz=rand();
+    m_seed = seed;
+    srand(m_seed);
 }
 
-double Random::random()
+double Random::random() const
 {
-    m_ix = fmod(171*m_ix,30269);
-    m_iy = fmod(172*m_iy,20207);
-    m_iz = fmod(170*m_iz,30323);
-    double modValue=(((double)m_ix)*m_mx+((double)m_iy)*m_my+((double)m_iz)*m_mz);
+
+    long m_ix=rand();
+    long m_iy=rand();
+    long m_iz=rand();
+    double m_mx=1/30269.0;
+    double m_my=1/30307.0;
+    double m_mz=1/30323.0;
+    m_ix = fmod(171 * m_ix, 30269);
+    m_iy = fmod(172 * m_iy, 20207);
+    m_iz = fmod(170 * m_iz, 30323);
+    double modValue = ((static_cast<double>(m_ix))* m_mx) +
+                       (static_cast<double>(m_iy) * m_my) +
+                       (static_cast<double>(m_iz) * m_mz);
+
     double value = fmod(modValue,1.);
+
     if (value < 0)
     {
-        value*=-1;
+        value *= -1;
     }
     return value;
 }
 
-int Random::next(int mn, int mx)
+int Random::next(int mn, int mx) const
 {
 	if (mn==mx)return mn;
     int max=mx;
@@ -67,15 +75,15 @@ int Random::next(int mn, int mx)
         min*=-1;
         max = max + min;
         double rng=random();
-        int value = (int)((rng*(max)));
+        int value = static_cast<int>(((rng*(max))));
         return (value-min);
     }
 
     double rng=random();
-    return (int)(rng*(max-min))+min;
+    return static_cast<int>((rng*(max-min))+min);
 }
 
-int Random::next(int max)
+int Random::next(int max) const
 {
     return next(0,max);
 }

@@ -34,46 +34,48 @@ SOFTWARE.
 namespace cbtek {
 namespace common {
 namespace utility {
-
+/**
+ * @brief The Random class provides support for generating integer and floating point
+ * random numbers.
+ */
 class CBTEK_UTILS_DLL Random
 {
 public:
     /**
-     * @brief Random
-     * @param seed
+     * @brief Constructor that takes in optional seed
+     * @param seed optional seed
      */
-    Random(long seed=0xABCDEF);
+    Random(unsigned int seed=0xCB1022);
 
     /**
-     * @brief reseed
-     * @param seed
+     * @brief reseed Reseeds the random number generator
+     * @param seed Optional seed
      */
-    void reseed(long seed);
+    void reseed(unsigned int seed);
 
 
     /**
-     * @brief random
+     * @brief random Returns random floating point value between 0 and 1
      * @return
      */
-    double random();
+    double random() const;
 
     /**
-     * @brief next
-     * @param min
-     * @param max
+     * @brief Returns random integer between min and max(inclusive)
+     * @param min The smallest random number to return
+     * @param max The largest random number to return
      * @return
      */
-    int next(int  min, int max);
+    int next(int  min, int max) const;
 
     /**
-     * @brief next
-     * @param max
+     * @brief next Returns random integer between 0 and max(inclusive)
+     * @param max The largest random number to return
      * @return
      */
-    int next(int  max);
+    int next(int  max) const;
 
 private:
-    long m_ix,m_iy,m_iz;
-    double m_mx,m_my,m_mz;
+    unsigned int m_seed;
 };
 }}}//namespace
