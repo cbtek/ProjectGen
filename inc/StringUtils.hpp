@@ -26,20 +26,20 @@ SOFTWARE.
 
 #pragma once
 
-#include "utility/inc/Exception.hpp"
-#include "utility/inc/UtilityCommon.hpp"
-#include "utility/inc/Random.h"
 #include "utility/inc/DateTimeUtils.hpp"
+#include "utility/inc/Exception.hpp"
+#include "utility/inc/Random.h"
+#include "utility/inc/UtilityCommon.hpp"
 
+#include <algorithm>
+#include <iomanip>
+#include <iostream>
+#include <list>
+#include <map>
+#include <set>
+#include <sstream>
 #include <string>
 #include <vector>
-#include <list>
-#include <sstream>
-#include <map>
-#include <algorithm>
-#include <iostream>
-#include <iomanip>
-
 
 namespace cbtek {
 namespace common {
@@ -1802,4 +1802,133 @@ inline std::string getFormattedNumeric(const std::string& potentialNumber)
     }
     return potentialNumber;
 }
+
+/**
+ * @brief vectorToString
+ * @param values
+ * @param seperator
+ * @return
+ */
+inline std::string vectorToString(const std::vector<std::string>& values,
+                            const std::string& seperator = "")
+{
+    std::string out;
+    size_t count = 0;
+    for (const auto& value : values)
+    {
+        out += value + (count < values.size() - 1 ? seperator : "");
+        ++count;
+    }
+    return out;
+}
+
+/**
+ * @brief vectorToString
+ * @param values
+ * @param prefixStr
+ * @param seperator
+ * @param postfixStr
+ * @return
+ */
+inline std::string vectorToString(const std::vector<std::string>& values,
+                            const std::string& prefixStr,
+                            const std::string& seperator,
+                            const std::string& postfixStr)
+{
+    std::string out;
+    size_t count = 0;
+    for (const auto& value : values)
+    {
+        out += prefixStr + value + postfixStr + (count < values.size() - 1 ? seperator : "");
+        ++count;
+    }
+    return out;
+}
+
+
+/**
+ * @brief listToString
+ * @param values
+ * @param seperator
+ * @return
+ */
+inline std::string listToString(const std::list<std::string>& values,
+                            const std::string& seperator = "")
+{
+    std::string out;
+    size_t count = 0;
+    for (const auto& value : values)
+    {
+        out += value + (count < values.size() - 1 ? seperator : "");
+        ++count;
+    }
+    return out;
+}
+
+/**
+ * @brief listToString
+ * @param values
+ * @param prefixStr
+ * @param seperator
+ * @param postfixStr
+ * @return
+ */
+inline std::string listToString(const std::list<std::string>& values,
+                            const std::string& prefixStr,
+                            const std::string& seperator,
+                            const std::string& postfixStr)
+{
+    std::string out;
+    size_t count = 0;
+    for (const auto& value : values)
+    {
+        out += prefixStr + value + postfixStr + (count < values.size() - 1 ? seperator : "");
+        ++count;
+    }
+    return out;
+}
+
+
+/**
+ * @brief setToString
+ * @param values
+ * @param seperator
+ * @return
+ */
+inline std::string setToString(const std::set<std::string>& values,
+                            const std::string& seperator = "")
+{
+    std::string out;
+    size_t count = 0;
+    for (const auto& value : values)
+    {
+        out += value + (count < values.size() - 1 ? seperator : "");
+        ++count;
+    }
+    return out;
+}
+
+/**
+ * @brief setToString
+ * @param values
+ * @param prefixStr
+ * @param seperator
+ * @param postfixStr
+ * @return
+ */
+inline std::string setToString(const std::set<std::string>& values,
+                            const std::string& prefixStr,
+                            const std::string& seperator,
+                            const std::string& postfixStr)
+{
+    std::string out;
+    size_t count = 0;
+    for (const auto& value : values)
+    {
+        out += prefixStr + value + postfixStr + (count < values.size() - 1 ? seperator : "");
+        ++count;
+    }
+    return out;
+}
+
 }}}} //namespace

@@ -28,6 +28,7 @@ add_library(${CURR_TARGET}
             ${CURR_TARGET_SOURCES}
             ${CURR_TARGET_HEADERS})
 
+
 #==============================================================================
 # Install 
 #==============================================================================
@@ -36,3 +37,4 @@ add_library(${CURR_TARGET}
 #else()
 #    install(TARGETS ${CURR_TARGET} ARCHIVE DESTINATION lib)
 #endif()
+
