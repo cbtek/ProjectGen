@@ -48,7 +48,7 @@ public:
      * @brief reseed
      * @param seed
      */
-    void reseed(long seed);
+    void reseed(long seed = time(NULL));
 
 
     /**
