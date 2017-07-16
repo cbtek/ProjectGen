@@ -51,7 +51,7 @@ public:
      * @brief reseed Reseeds the random number generator
      * @param seed Optional seed
      */
-    void reseed(unsigned int seed);
+    void reseed(unsigned int seed = time(NULL));
 
 
     /**

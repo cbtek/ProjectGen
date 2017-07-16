@@ -27,3 +27,14 @@ add_library(${CURR_TARGET}
             ${LIBRARY_MODE}
             ${CURR_TARGET_SOURCES}
             ${CURR_TARGET_HEADERS})
+
+
+#==============================================================================
+# Install 
+#==============================================================================
+#if (${ENABLE_COMMON_UTILS_DYNAMIC_LIB})
+#    install(TARGETS ${CURR_TARGET} LIBRARY DESTINATION lib)
+#else()
+#    install(TARGETS ${CURR_TARGET} ARCHIVE DESTINATION lib)
+#endif()
+
