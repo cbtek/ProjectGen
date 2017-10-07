@@ -852,6 +852,22 @@ inline bool commandLineArgExists(int argc,
 }
 
 /**
+ * @brief commandLineArgExists
+ * @param argc
+ * @param argv
+ * @param argName
+ * @param altArgName
+ * @return
+ */
+inline bool commandLineArgExists(int argc,
+                                 char **argv,
+                                 const std::string &argName,
+                                 const std::string &altArgName)
+{
+    return commandLineArgExists(argc,argv,argName) || commandLineArgExists(argc,argv,altArgName);
+}
+
+/**
 * @brief This function joins together all items in vector
 * @param items Vector of items to join together
 * @return Concatenated string of all the contents
