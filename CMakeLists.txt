@@ -5,6 +5,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CURR_TARGET common_utils)
 set(CURR_TARGET_SOURCES "${CURR_TARGET}_SOURCES")
 set(CURR_TARGET_HEADERS"${CURR_TARGET}_HEADERS")
+
 include(${CMAKE_MODULE_PATH}/flags.cmake)
 
 include_directories(inc)
