@@ -12,12 +12,6 @@ set(CURR_TARGET_HEADERS "${CURR_TARGET}_HEADERS")
 set(CURR_TARGET_HEADERS_NO_MOC "${CURR_TARGET}_HEADERS_NO_MOC")
 set(CURR_TARGET_RESOURCES "${CURR_TARGET}_RESOURCES")
 
-include_directories(src)
-include_directories(inc)
-include_directories(resx)
-
-include(${CMAKE_MODULE_PATH}/flags.cmake)
-
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
@@ -27,6 +21,8 @@ find_package(Qt5Widgets REQUIRED)
 #==============================================================================
 # Include Source Files
 #==============================================================================
+include_directories(inc)
+include(${CMAKE_MODULE_PATH}/flags.cmake)
 file(GLOB CURR_TARGET_SOURCES "src/*.cpp")
 file(GLOB CURR_TARGET_HEADERS "inc/*.h*")
 file(GLOB CURR_TARGET_FORMS "src/*.ui")
@@ -36,7 +32,7 @@ file(GLOB CURR_TARGET_RESOURCES "resx/*.qrc")
 # Add Executable
 #==============================================================================
 add_executable(${CURR_TARGET}
-			   ${PLATFORM}
+               ${PLATFORM}
                ${CURR_TARGET_SOURCES}
                ${CURR_TARGET_HEADERS}
                ${CURR_TARGET_FORMS}
@@ -52,4 +48,4 @@ qt5_use_modules(${CURR_TARGET} Widgets)
 #==============================================================================
 # Target Link Libraries
 #==============================================================================
-#target_link_libraries(${CURR_TARGET} Qt5::Widgets)
+target_link_libraries(${CURR_TARGET} Qt5::Widgets)

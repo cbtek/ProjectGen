@@ -10,10 +10,6 @@ set(CURR_TARGET_FORMS "${CURR_TARGET}_FORMS")
 set(CURR_TARGET_HEADERS "${CURR_TARGET}_HEADERS")
 set(CURR_TARGET_RESOURCES "${CURR_TARGET}_RESOURCES")
 
-include_directories(src)
-include_directories(inc)
-include_directories(res)
-
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
@@ -23,6 +19,7 @@ find_package(Qt5Widgets REQUIRED)
 #==============================================================================
 # Include Source Files
 #==============================================================================
+include_directories(inc)
 file(GLOB CURR_TARGET_SOURCES "src/*.cpp")
 file(GLOB CURR_TARGET_FORMS "src/*.ui")
 file(GLOB CURR_TARGET_HEADERS "inc/*.h*")
