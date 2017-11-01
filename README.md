@@ -1,4 +1,7 @@
 # ProjectGen
+
+[![ProjectGen Demo](http://img.youtube.com/vi/Gxvsf9IKB8o/0.jpg)](https://www.youtube.com/watch?v=Gxvsf9IKB8o "ProjectGen Demo")
+
 This is a CMake scaffolding tool for generating skeleton projects for C++ and Qt.
 
 **The Command Line Version**    
@@ -50,7 +53,7 @@ pgen -n "MyProject" -t "CPL" -p "/home/user/project"
 ------------------------------------
 ```
 
-Currently there are four templates used for generating projects and one for generating a entire codebase.
+Currently there are four templates used for generating projects and one for generating an entire codebase.
 
 If you are starting a new project from scratch, then use the "BASE" type: 
 ```
