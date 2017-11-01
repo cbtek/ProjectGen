@@ -29,7 +29,7 @@ nmake
 
 
 # Documentation
-`------------------------------------
+```------------------------------------
 ProjectGen Help 
 ------------------------------------
 --project-name   [-n] <name of project>    (required)
@@ -47,12 +47,12 @@ Valid project-types:
 ------------------------------------
 Example:
 pgen -n "MyProject" -t "CPL" -p "/home/user/project"
-------------------------------------` 
+------------------------------------```
 
 Currently there are four templates used for generating projects and one for generating a entire codebase.
 
 If you are starting a new project from scratch, then use the "BASE" type: 
-`pgen -n "MyGames" -t "BASE" `
+```pgen -n "MyGames" -t "BASE"```
 
 The command above will generate the following:
 * MyGames/cmake - Location of generic cmake scripts 
@@ -65,8 +65,8 @@ The command above will generate the following:
 
 Once you have generated a base project, you can enter the products or common folder and begin generating sub projects using the CPA, CPL, QTA and QTL projectgen types:
  
-`cd products 
-pgen -n "MyTetrisClone" -t "QTA"`  
+```cd products``` 
+```pgen -n "MyTetrisClone" -t "QTA" ```
 This command will generate a folder in products called "MyTetrisClone" with the following contents:
 MyTetrisClone/inc - Location to put all C++ header files (.h / .hpp / .hxx)
 MyTetrisClone/src - Location to put all C++ source files (.cpp /.cc /.cxx)
