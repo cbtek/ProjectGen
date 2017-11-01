@@ -73,8 +73,8 @@ cd products
 pgen -n "MyTetrisClone" -t "QTA" 
 ```
 
-This command will generate a folder in products called "MyTetrisClone" with the following contents:
-MyTetrisClone/inc - Location to put all C++ header files (.h / .hpp / .hxx)
-MyTetrisClone/src - Location to put all C++ source files (.cpp /.cc /.cxx)
-MyTetrisClone/CMakeLists.txt - CMake setup project relative to current folder
+This command will generate a folder in products called "MyTetrisClone" with the following contents: 
+* MyTetrisClone/inc - Location to put all C++ header files (.h / .hpp / .hxx)
+* MyTetrisClone/src - Location to put all C++ source files (.cpp /.cc /.cxx)
+* MyTetrisClone/CMakeLists.txt - CMake setup project relative to current folder
 
