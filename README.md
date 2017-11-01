@@ -1,5 +1,5 @@
 # ProjectGen
-This is a CMake scaffolding tool for generating skeleton projects for C++ and Qt. It 
+This is a CMake scaffolding tool for generating skeleton projects for C++ and Qt.
 
 **The Command Line Version**    
 pgen - The command line version of the application does not require Qt to build.  
