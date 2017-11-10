@@ -16,13 +16,11 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-find_package(Qt5Widgets REQUIRED)
-
+find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
 #==============================================================================
 # Include Source Files
 #==============================================================================
 include_directories(inc)
-include(${CMAKE_MODULE_PATH}/flags.cmake)
 file(GLOB CURR_TARGET_SOURCES "src/*.cpp")
 file(GLOB CURR_TARGET_HEADERS "inc/*.h*")
 file(GLOB CURR_TARGET_FORMS "src/*.ui")

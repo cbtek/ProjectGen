@@ -4,17 +4,15 @@
 cmake_minimum_required(VERSION 3.0)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CURR_TARGET %%PROJECT_NAME%%)
-
 set(CURR_TARGET_SOURCES "${CURR_TARGET}_SOURCES")
 set(CURR_TARGET_FORMS "${CURR_TARGET}_FORMS")
 set(CURR_TARGET_HEADERS "${CURR_TARGET}_HEADERS")
 set(CURR_TARGET_RESOURCES "${CURR_TARGET}_RESOURCES")
-
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-find_package(Qt5Widgets REQUIRED)
+find_package(Qt5 COMPONENTS Core Widgets REQUIRED)
 
 #==============================================================================
 # Include Source Files

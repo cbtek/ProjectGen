@@ -13,7 +13,6 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Include Source Files
 #==============================================================================
 include_directories(inc)
-include(${CMAKE_MODULE_PATH}/flags.cmake)
 file(GLOB CURR_TARGET_SOURCES "src/*.cpp")
 file(GLOB CURR_TARGET_HEADERS "inc/*.h*")
 
@@ -21,16 +20,16 @@ file(GLOB CURR_TARGET_HEADERS "inc/*.h*")
 # Add Executable
 #==============================================================================
 add_executable(${CURR_TARGET}
-                                ${CURR_TARGET_SOURCES}
-                                ${CURR_TARGET_HEADERS})
+               ${CURR_TARGET_SOURCES}
+               ${CURR_TARGET_HEADERS})
 
 #==============================================================================
 # Add Dependencies
 #==============================================================================
 
-add_dependencies(${CURR_TARGET} common_utils )
+#add_dependencies(${CURR_TARGET} common_utils )
 
 #==============================================================================
 # Target Link Libraries
 #==============================================================================
-target_link_libraries(${CURR_TARGET} common_utils )
+#target_link_libraries(${CURR_TARGET} common_utils )
