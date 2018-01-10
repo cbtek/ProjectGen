@@ -1023,6 +1023,22 @@ public:
     {
         return (DateUtils::toShortDateString(dateEntity,"yyyymmdd")+"T"+std::to_string(timeEntity.toTimeInteger()));
     }
+
+    /**
+     * @brief getUTCTimeStampString
+     * @return
+     */
+    static std::string getUTCTimeStampString()
+    {
+         time_t rawtime;
+         struct tm * ptm;
+         time ( &rawtime );
+         ptm = gmtime ( &rawtime );
+
+         TimeEntity timeEntity(ptm->tm_hour,ptm->tm_min,ptm->tm_sec);
+         DateEntity dateEntity(ptm->tm_mon, ptm->tm_mday,ptm->tm_year);
+         return getTimeStamp(dateEntity,timeEntity);
+    }
 };
 
 }}} //namespace

@@ -28,12 +28,11 @@ SOFTWARE.
 #include <cstdlib>
 #include <vector>
 #include <map>
+#include <ctime>
 
 #include "UtilityCommon.hpp"
 
-namespace cbtek {
-namespace common {
-namespace utility {
+BEGIN_NAMESPACE_CBTEK_COMMON_UTILITY
 /**
  * @brief The Random class provides support for generating integer and floating point
  * random numbers.
@@ -78,4 +77,4 @@ public:
 private:
     unsigned int m_seed;
 };
-}}}//namespace
+END_NAMESPACE_CBTEK_COMMON_UTILITY

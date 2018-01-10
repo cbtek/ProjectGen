@@ -26,10 +26,10 @@ SOFTWARE.
 
 #pragma once
 
+#include "utility/inc/UtilityCommon.hpp"
 #include "utility/inc/DateTimeUtils.hpp"
 #include "utility/inc/Exception.hpp"
 #include "utility/inc/Random.h"
-#include "utility/inc/UtilityCommon.hpp"
 
 #include <algorithm>
 #include <iomanip>
@@ -174,6 +174,7 @@ inline size_t removeInPlace(std::string &srcString,
         while (i != std::string::npos)
         {
            srcString.erase(i, stringToRemove.length());
+           stringToRemoveUpper.erase(i,stringToRemoveUpper.length());
            ++removeCount;
            i = srcStringUpper.find(stringToRemoveUpper);
         }

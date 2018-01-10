@@ -993,4 +993,22 @@ static std::vector<std::string> getFileEntries(const std::string& dirPath,
     getFileEntries(dirPath,fullPath,filters,entries);
     return entries;
 }
+
+static std::string createTemporaryFilePath(const std::string & customExtension = "")
+{
+    std::string tmpfolder;
+#ifdef _WIN32
+    char dir[c_MAX_PATH];
+
+    GetTempPathA(c_MAX_PATH, dir);
+    GetLongPathNameA(dir, dir, c_MAX_PATH);
+
+    std::string dirStr(dir);
+    SystemUtils_EmbeddedUtils::replaceInPlace(dirStr,"\\","/");
+    tmpfolder = dirStr;
+#else
+    tmpfolder = std::string("/tmp");
+#endif
+    return FileUtils::buildFilePath(tmpfolder, StringUtils::createUUID() + customExtension);
+}
 }}}}

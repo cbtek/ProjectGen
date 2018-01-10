@@ -10,6 +10,9 @@
 #include <codecvt>
 #include <string>
 #include <vector>
+#include <thread>
+#include <stdio.h>
+#include <stdlib.h>
 
 #ifdef _WIN32
 #   include <windows.h>
@@ -635,7 +638,7 @@ inline std::string getUserName()
  * @return
  */
 inline int execute(const std::string& command,
-                          const std::string& args)
+                   const std::string& args)
 {
     return system((command+" "+args).c_str());  //one day this will do more
 }
@@ -660,11 +663,7 @@ inline std::string getCurrentDirectory()
     #ifdef _WIN32
         GetCurrentDirectoryA(MAX_PATH, dir);
     #else
-        char * ret = getcwd(dir, c_MAX_PATH);
-        if (ret)
-        {
-            delete ret;
-        }
+        getcwd(dir, c_MAX_PATH);
     #endif
     return std::string(dir);
 }
@@ -737,6 +736,15 @@ inline int executeInTerminal(const std::string& command, const std::string& args
     #endif
         //std::cerr <<"SystemUtils::executeInTerminal - " << cmd<<std::endl;
     return system(cmd.c_str());
+}
+
+/**
+ * @brief idle Simple sleep function
+ * @param milliseconds Amount of time to sleep
+ */
+static inline void idle(int milliseconds)
+{
+    std::this_thread::sleep_for(std::chrono::milliseconds(milliseconds));
 }
 
 }}}}//end namespace

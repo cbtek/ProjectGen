@@ -695,6 +695,12 @@ class XMLStreamWriter
         m_out<<" "<<attributeName<<"=\""<<attributeValue<<"\"";
     }
 
+    /**
+     * @brief setCurrentTab
+     * @param currentTab
+     */
+    void setCurrentTab(size_t currentTab);
+
     //! Destructor
     ~XMLStreamWriter();
 

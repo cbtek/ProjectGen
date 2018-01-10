@@ -29,9 +29,9 @@ SOFTWARE.
 #include <memory>
 #include <vector>
 
-namespace cbtek {
-namespace common {
-namespace utility {
+#include "UtilityCommon.hpp"
+
+BEGIN_NAMESPACE_CBTEK_COMMON_UTILITY
 
 /**
  * @brief The ColorStringStyle enum contains
@@ -1511,4 +1511,4 @@ private:
     std::vector<Color> m_colors;
     bool colorExists(const Color & color);
 };
-}}}//namespace
+END_NAMESPACE_CBTEK_COMMON_UTILITY

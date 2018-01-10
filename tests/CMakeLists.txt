@@ -26,5 +26,5 @@ add_executable(${CURR_TARGET}
                ${CURR_TARGET_SOURCES}
                ${CURR_TARGET_HEADERS})
 
-add_dependencies(${CURR_TARGET} common_utils)
-target_link_libraries(${CURR_TARGET} common_utils)
+add_dependencies(${CURR_TARGET} ${CBTEK_UTILITY_LIBRARY})
+target_link_libraries(${CURR_TARGET} ${CBTEK_UTILITY_LIBRARY})

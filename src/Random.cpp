@@ -24,9 +24,7 @@ SOFTWARE.
 
 #include "Random.h"
 
-namespace cbtek {
-namespace common {
-namespace utility {
+BEGIN_NAMESPACE_CBTEK_COMMON_UTILITY
 
 Random::Random(unsigned int seed)
 {
@@ -88,4 +86,4 @@ int Random::next(int max) const
     return next(0,max);
 }
 
-}}}//namespace
+END_NAMESPACE_CBTEK_COMMON_UTILITY

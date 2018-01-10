@@ -28,12 +28,7 @@ SOFTWARE.
 #include "Random.h"
 #include "StringUtils.hpp"
 
-using namespace cbtek::common::utility;
-
-namespace cbtek {
-namespace common {
-namespace utility {
-
+BEGIN_NAMESPACE_CBTEK_COMMON_UTILITY
 
 inline static std::string toHex(int value)
 {
@@ -1703,5 +1698,4 @@ void ColorFactory::resetNextColor()
 {
     colors::NEXT_COLOR=colors::ColorType(0);
 }
-
-}}}//namespace
+END_NAMESPACE_CBTEK_COMMON_UTILITY

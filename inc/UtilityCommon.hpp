@@ -35,11 +35,14 @@ SOFTWARE.
 #   define CBTEK_UTILS_DLL
 #endif
 
-namespace cbtek{
-namespace common{
-namespace utility{
+#define BEGIN_NAMESPACE_CBTEK_COMMON_UTILITY namespace cbtek { \
+                                             namespace common {  \
+                                             namespace utility {
 
+#define END_NAMESPACE_CBTEK_COMMON_UTILITY }}}
+#define USE_NAMESPACE_CBTEK_COMMON_UTILITY using namespace cbtek::common::utility;
+
+BEGIN_NAMESPACE_CBTEK_COMMON_UTILITY
     const static int  c_DEFAULT_FLOATING_PRECISION = 12;
     const static bool c_DEFAULT_CASE_SENSITIVE = true;
-
-}}} //namespace
+END_NAMESPACE_CBTEK_COMMON_UTILITY
