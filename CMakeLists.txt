@@ -2,8 +2,6 @@
 # CMakeLists file for utility
 #==============================================================================
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-include(${CMAKE_MODULE_PATH}/libraries.cmake)
-message(${CBTEK_UTILITY_LIBRARY})
 set(CURR_TARGET ${CBTEK_UTILITY_LIBRARY})
 set(CURR_TARGET_SOURCES "${CURR_TARGET}_SOURCES")
 set(CURR_TARGET_HEADERS"${CURR_TARGET}_HEADERS")

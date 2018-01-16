@@ -23,6 +23,8 @@ SOFTWARE.
 */
 
 #include "Random.h"
+#include <set>
+#include <unordered_set>
 
 BEGIN_NAMESPACE_CBTEK_COMMON_UTILITY
 
@@ -84,6 +86,53 @@ int Random::next(int mn, int mx) const
 int Random::next(int max) const
 {
     return next(0,max);
+}
+
+int Random::next()
+{
+    int value = m_values[m_next_value];
+    m_next_value++;
+    if (m_next_value >= m_values.size())
+    {
+        m_next_value = 0;
+    }
+    return value;
+}
+
+std::vector<int> Random::generate(int total, int min, int max)
+{
+    m_values.clear();
+    m_values.resize(total);
+    m_next_value = 0;
+    for (size_t a1 = 0; a1 < total; ++a1)
+    {
+        m_values[a1] = next(min,max);
+    }
+    return m_values;
+}
+
+std::vector<int> Random::generateUnique(int total, int min, int max)
+{
+    if (max-min < total)
+    {
+        return generate(total,min,max);
+    }
+    std::unordered_set<int> values;
+    m_values.clear();
+    m_next_value = 0;
+    for (size_t a1 = 0; a1 < total; ++a1)
+    {
+         int value = next(min,max);
+        if (values.count(value))
+        {
+            a1--;
+            continue;
+        }
+
+        values.insert(value);
+    }
+    m_values = std::vector<int>(values.begin(),values.end());
+    return m_values;
 }
 
 END_NAMESPACE_CBTEK_COMMON_UTILITY

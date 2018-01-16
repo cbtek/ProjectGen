@@ -74,7 +74,32 @@ public:
      */
     int next(int  max) const;
 
+    /**
+     * @brief next
+     * @return
+     */
+    int next();
+
+    /**
+     * @brief generate
+     * @param total
+     * @param min
+     * @param max
+     */
+    std::vector<int> generate(int total, int min, int max);
+
+
+    /**
+     * @brief generate
+     * @param total
+     * @param min
+     * @param max
+     */
+    std::vector<int> generateUnique(int total, int min, int max);
+
 private:
+    std::vector<int> m_values;
     unsigned int m_seed;
+    size_t m_next_value;
 };
 END_NAMESPACE_CBTEK_COMMON_UTILITY
