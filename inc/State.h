@@ -3,26 +3,22 @@
 namespace cbtek{
 namespace common{
 namespace utility{
+enum class StateType
+{
+    Enter,
+    Update,
+    Exit
+};
+
 class State
 {
 public:
-    State();
-    bool isEnter() const;
-    bool isUpdate() const;
-    bool isExit() const;
-    void setEnter(const bool & mode);
-    void setUpdate(const bool & mode);
-    void setExit(const bool & mode);
-    void setEnter();
-    void setUpdate();
-    void setExit();
-    void setId(int id);
-    int getId() const;
+    State() { m_type = StateType::Enter; }
+    StateType type() const { return m_type; }
+    void setType(StateType type) { m_type = type; }
+    void next();
     void reset();
 private:
-    bool m_isEnter,m_isUpdate,m_isExit;
-    int m_id;
-
-
+    StateType m_type;
 };
 }}}//namespace
