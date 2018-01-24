@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 namespace cbtek{
 namespace common{
 namespace utility{
@@ -21,4 +23,5 @@ public:
 private:
     StateType m_type;
 };
+using StatePtr = std::shared_ptr<State>;
 }}}//namespace

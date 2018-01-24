@@ -213,6 +213,47 @@ public:
      */
     void setName(const std::string & name);
 
+    /**
+     * @brief incrementRed
+     * @param value
+     */
+    void incrementRed(uint8_t value);
+
+    /**
+     * @brief incrementGreen
+     * @param value
+     */
+    void incrementGreen(uint8_t value);
+
+    /**
+     * @brief incrementBlue
+     * @param value
+     */
+    void incrementBlue(uint8_t value);
+
+    /**
+     * @brief incrementAlpha
+     * @param value
+     */
+    void incrementAlpha(uint8_t value);
+
+    /**
+     * @brief getRGB
+     * @param r
+     * @param g
+     * @param b
+     */
+    void getRGB(uint8_t &r, uint8_t &g, uint8_t &b);
+
+    /**
+     * @brief getRGBA
+     * @param r
+     * @param g
+     * @param b
+     * @param a
+     */
+    void getRGBA(uint8_t &r, uint8_t &g, uint8_t &b, uint8_t &a);
+
 private:
 
     uint8_t m_red;

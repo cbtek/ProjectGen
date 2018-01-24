@@ -72,6 +72,34 @@ void Color::setName(const std::string & name)
     m_name=name;
 }
 
+void Color::incrementRed(uint8_t value)
+{
+    m_red += value;
+}
+
+void Color::incrementGreen(uint8_t value)
+{
+    m_green += value;
+}
+
+void Color::incrementBlue(uint8_t value)
+{
+    m_blue += value;
+}
+
+void Color::incrementAlpha(uint8_t value)
+{
+    m_alpha += value;
+}
+
+void Color::getRGB(uint8_t &r, uint8_t &g, uint8_t &b)
+{
+    r = m_red;
+    b = m_blue;
+    g = m_green;
+
+}
+
 std::string Color::getName() const
 {
     return m_name;
@@ -1698,4 +1726,13 @@ void ColorFactory::resetNextColor()
 {
     colors::NEXT_COLOR=colors::ColorType(0);
 }
+
+void Color::getRGBA(uint8_t &r, uint8_t &g, uint8_t &b, uint8_t &a)
+{
+    r = m_red;
+    g = m_green;
+    b = m_blue;
+    a = m_alpha;
+}
+
 END_NAMESPACE_CBTEK_COMMON_UTILITY
