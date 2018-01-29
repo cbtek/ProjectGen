@@ -104,7 +104,7 @@ std::vector<int> Random::generate(int total, int min, int max)
     m_values.clear();
     m_values.resize(total);
     m_next_value = 0;
-    for (size_t a1 = 0; a1 < total; ++a1)
+    for (int a1 = 0; a1 < total; ++a1)
     {
         m_values[a1] = next(min,max);
     }
@@ -120,7 +120,7 @@ std::vector<int> Random::generateUnique(int total, int min, int max)
     std::unordered_set<int> values;
     m_values.clear();
     m_next_value = 0;
-    for (size_t a1 = 0; a1 < total; ++a1)
+    for (int a1 = 0; a1 < total; ++a1)
     {
          int value = next(min,max);
         if (values.count(value))

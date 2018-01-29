@@ -634,12 +634,11 @@ inline void deleteFile(const std::string & sourceFile)
  */
 inline bool createDirectory(const std::string &dirPath)
 {
-    int nError=0;
     #if defined(_WIN32)
         CreateDirectory(dirPath.c_str(), NULL);
         nError = GetLastError();
     #else
-        nError = mkdir(dirPath.c_str(),0733);
+        mkdir(dirPath.c_str(),0733);
     #endif
     return isDirectory(dirPath);
 }
@@ -682,7 +681,7 @@ inline std::string getRandomFolderName(int length)
     Random rnd;
     rnd.reseed((std::uint64_t)TimeUtils::getMillisecondsNow() + TimeUtils::getSecondsNow());
     std::string file;
-    for (size_t a1 = 0;a1<length;++a1)
+    for (int a1 = 0;a1<length;++a1)
     {
         if (rnd.next(100) > 75)
         {
@@ -717,7 +716,7 @@ inline std::string getRandomFileName(int length, int extensionLength)
 
     std::string file = getRandomFolderName(length);
     file.push_back('.');
-    for (size_t a1 = 0;a1<extensionLength;++a1)
+    for (int a1 = 0;a1<extensionLength;++a1)
     {
         if (rnd.next(100) > 75)
         {
@@ -926,7 +925,7 @@ inline int deleteFolder(const std::string &dirPath)
  * @param directoryPath
  * @return
  */
-static bool isDirectoryWritable(const std::string & directoryPath)
+inline bool isDirectoryWritable(const std::string & directoryPath)
 {
     std::string file = buildFilePath(directoryPath,".writable.temp");
     std::ofstream out(file.c_str(),std::ios::out);
