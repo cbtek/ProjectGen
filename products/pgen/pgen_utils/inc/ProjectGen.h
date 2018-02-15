@@ -57,7 +57,7 @@ public:
     ProjectGen(ProjectGenType type,
                const std::string & projectName,
                const std::string & path,
-               bool enableLog);
+               bool enableLog = false);
 
     void generate();
     //! Destructor
