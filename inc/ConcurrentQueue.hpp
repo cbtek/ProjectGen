@@ -1,7 +1,5 @@
 /*
-    ConcurrentQueue.hpp
-    
-
+    ConcurrentQueue.hpp  
 */
 #pragma once
 
@@ -12,9 +10,9 @@
 #include <vector>
 #include <condition_variable>
 
-namespace cbtek {
-namespace common {
-namespace utility {
+#include "UtilityCommon.hpp"
+
+BEG_NAMESPACE_CBTEK_UTILITY
 
 template <typename T>
 class ConcurrentQueue
@@ -88,4 +86,4 @@ public:
     std::mutex m_mutex;
     std::condition_variable m_cond;
 };
-}}}//end namespace
+END_NAMESPACE_CBTEK_UTILITY

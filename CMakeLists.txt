@@ -1,21 +1,28 @@
 #==============================================================================
-# CMakeLists file for utility
+# CMakeLists file for CBTEK_UTILITY_LIBRARY
 #==============================================================================
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CURR_TARGET ${CBTEK_UTILITY_LIBRARY})
 set(CURR_TARGET_SOURCES "${CURR_TARGET}_SOURCES")
-set(CURR_TARGET_HEADERS"${CURR_TARGET}_HEADERS")
-if (${ENABLE_COMMON_UTILS_UNIT_TESTS})
-    add_subdirectory(tests)
-endif()
+set(CURR_TARGET_HEADERS "${CURR_TARGET}_HEADERS")
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 #==============================================================================
 # Include Source Files
 #==============================================================================
-include(${CMAKE_MODULE_PATH}/flags.cmake)
 include_directories(inc)
-file(GLOB CURR_TARGET_SOURCES "src/*.cpp")
-file(GLOB CURR_TARGET_HEADERS "inc/*.h*")
+include_directories(external/tinyxml2/inc)
+include_directories(external/backward/inc)
+file(GLOB CURR_TARGET_SOURCES "src/*.cpp"
+                              "external/tinyxml2/src/*.cpp"
+                              "external/backward/src/*.cpp")
+file(GLOB CURR_TARGET_HEADERS "inc/*.h*"
+                              "external/tinyxml2/inc/*.h*"
+                              "external/backward/inc/*.h*")
+
+if (${CBTEK_UNIT_TESTS_ENABLED} MATCHES ON)
+    add_subdirectory(tests)
+endif()
 
 #==============================================================================
 # Add Library
@@ -23,13 +30,15 @@ file(GLOB CURR_TARGET_HEADERS "inc/*.h*")
 add_library(${CURR_TARGET}
             ${LIBRARY_MODE}
             ${CURR_TARGET_SOURCES}
-            ${CURR_TARGET_HEADERS})
+            ${CURR_TARGET_HEADERS}
+           )
 #==============================================================================
 # Install 
 #==============================================================================
-#if (${ENABLE_COMMON_UTILS_DYNAMIC_LIB})
-#    install(TARGETS ${CURR_TARGET} LIBRARY DESTINATION lib)
-#else()
-#    install(TARGETS ${CURR_TARGET} ARCHIVE DESTINATION lib)
-#endif()
+#if(BUILD_CBTEK_UTILS_STATIC_LIBRARY)
+#    INSTALL(TARGETS ${CURR_TARGET} ARCHIVE DESTINATION bin)
+#else(BUILD_CBTEK_UTILS_STATIC_LIBRARY)
+#    INSTALL(TARGETS ${CURR_TARGET} RUNTIME DESTINATION bin)
+#endif(BUILD_CBTEK_UTILS_STATIC_LIBRARY)
+
 

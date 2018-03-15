@@ -23,11 +23,12 @@ SOFTWARE.
 
 */
 
-#include "utility/inc/StringUtils.hpp"
-#include "utility/inc/FileUtils.hpp"
-#include "contrib/catch/catch.hpp"
+#include "DILIsymUtility/inc/StringUtils.hpp"
+#include "DILIsymUtility/inc/FileUtils.hpp"
+#include <catch/catch.hpp>
 
-using namespace cbtek::common::utility;
+USE_NAMESPACE_CBTEK_UTILITY
+
 static const std::string dataFolder = "testData/utility/";
 
 

@@ -1,54 +1,48 @@
-/**
-MIT License
-
-Copyright (c) 2016 cbtek
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
+/** @file XMLUtils.h
+ *
+ * @details This file contains classes and utilities
+ * for the basic parsing of XML files.
+ *
+ */
 
 #pragma once
 
+//std headers
 #include <map>
 #include <vector>
 #include <sstream>
 #include <string>
+#include <memory>
 
-#include "utility/inc/Exception.hpp"
-#include "utility/inc/FileUtils.hpp"
-#include "utility/inc/StringUtils.hpp"
-#include "utility/inc/UtilityCommon.hpp"
+//utility headers
+#include "Exception.hpp"
+#include "FileUtils.hpp"
+#include "StringUtils.hpp"
+#include "UtilityCommon.hpp"
 
-namespace cbtek {
-namespace common {
-namespace utility {
+//tinyxml headers
+#include "DILIsymUtility/external/tinyxml2/inc/tinyxml2.h"
+
+BEG_NAMESPACE_CBTEK_UTILITY
 
 class XMLDataElement;
-typedef std::vector<XMLDataElement*> ChildElementVector;
-typedef std::vector<std::pair<std::string,std::string> > AttributeVector;
+using XMLDataElementPtr = std::shared_ptr<XMLDataElement>;
+typedef std::vector<XMLDataElementPtr> ChildElementVector;
+typedef std::vector<std::pair<std::string, std::string> > AttributeVector;
 
-class CBTEK_UTILS_DLL XMLDataElement
+class CBTEK_UTILITY_DLL XMLDataElement
 {
 public:
     /**
      * @brief XMLDataElement
      */
     XMLDataElement();
+
+    /**
+     * @brief XMLDataElement
+     * @param element
+     */
+    XMLDataElement(const tinyxml2::XMLElement &element);
 
     /**
      * @brief XMLDataElement
@@ -77,14 +71,14 @@ public:
      * @brief getElementName
      * @return
      */
-    const std::string & getElementName() const;
+    const std::string &getElementName() const;
 
     /**
      * @brief getElementData
      * @param trimmed
      * @return
      */
-    std::string getElementData(bool trimmed=false) const;
+    std::string getElementData(bool trimmed = false) const;
 
     /**
      * @brief getElementDataAsInteger
@@ -104,7 +98,7 @@ public:
      * @param caseSensitive
      * @return
      */
-    std::string getAttributeValue(const std::string & attributeName,bool caseSensitive=false) const;
+    std::string getAttributeValue(const std::string & attributeName, bool caseSensitive = false) const;
 
     /**
      * @brief getAttributeName
@@ -118,7 +112,7 @@ public:
      * @param index
      * @return
      */
-    std::string getAttributeValue(size_t index) const;    
+    std::string getAttributeValue(size_t index) const;
 
     /**
      * @brief getParent
@@ -159,7 +153,7 @@ public:
      * @param caseSensitive
      * @return
      */
-    bool attributeExists(const std::string &attributeName,bool caseSensitive=false) const;
+    bool attributeExists(const std::string &attributeName, bool caseSensitive = false) const;
 
     /**
      * @brief hasChildren
@@ -180,7 +174,7 @@ public:
      * @param caseSensitive
      * @return
      */
-    bool childExists(const std::string & name, bool caseSensitive=false);
+    bool childExists(const std::string & name, bool caseSensitive = false);
 
     /**
      * @brief getNumChildren
@@ -230,13 +224,13 @@ public:
      * @brief addChild
      * @param child
      */
-    void addChild(XMLDataElement * child);
+    void addChild(XMLDataElementPtr child);
 
     /**
      * @brief setParent
      * @param parent
      */
-    void setParent(XMLDataElement * parent);
+    void setParent(XMLDataElement *parent);
 
     /**
      * @brief setLocalIndex
@@ -250,7 +244,7 @@ public:
      * @param caseSensitive
      * @return
      */
-    XMLDataElement * find(const std::string & name, const bool & caseSensitive=false);
+    XMLDataElement * find(const std::string & name, const bool & caseSensitive = false);
 
     /**
      * @brief find
@@ -258,7 +252,7 @@ public:
      * @param caseSensitive
      * @return
      */
-    const XMLDataElement * find(const std::string & name, const bool & caseSensitive=false) const;
+    const XMLDataElement * find(const std::string & name, const bool & caseSensitive = false) const;
 
     /**
      * @brief addAttribute
@@ -283,8 +277,8 @@ public:
     void addAttribute(const std::string & attributeName, const T & attributeValue)
     {
         m_Attributes.push_back(
-                    std::make_pair(attributeName,
-                                              StringUtils::toString(attributeValue)));
+            std::make_pair(attributeName,
+                StringUtils::toString(attributeValue)));
     }
 
     /**
@@ -298,7 +292,7 @@ public:
         Number valueNumber;
         std::string valueStr = getAttributeValue(attributeName);
         std::stringstream in(valueStr);
-        in>>valueNumber;
+        in >> valueNumber;
         return valueNumber;
     }
 
@@ -316,7 +310,7 @@ public:
         {
             Number valueNumber;
             std::stringstream in(data);
-            in>>valueNumber;
+            in >> valueNumber;
             return valueNumber;
         }
         return 0;
@@ -339,8 +333,8 @@ protected:
      * @return
      */
     XMLDataElement *findInSubTree(const std::string & name,
-                                  const XMLDataElement *element,
-                                  const bool &caseSensitive);
+        const XMLDataElement *element,
+        const bool &caseSensitive);
 
     /**
      * @brief findInSubTree
@@ -350,27 +344,19 @@ protected:
      * @return
      */
     const XMLDataElement *findInSubTree(const std::string & name,
-                                        const XMLDataElement *element,
-                                        const bool &caseSensitive) const;
-    size_t m_LocalIndex;
+        const XMLDataElement *element,
+        const bool &caseSensitive) const;
 
-    #ifdef _MSC_VER
-    #   pragma warning( push )
-    #   pragma warning( disable : 4251 )
-    #endif        
-        std::string m_Name;
-        std::string m_Data;
-        std::string m_Temp;
-        AttributeVector m_Attributes;
-        ChildElementVector m_ChildElementVector;
-        XMLDataElement * m_Parent;
-    #ifdef _MSC_VER
-    #   pragma warning( pop )
-    #endif          
+    size_t m_LocalIndex;
+    std::string m_Name;
+    std::string m_Data;
+    std::string m_Temp;
+    AttributeVector m_Attributes;
+    ChildElementVector m_ChildElementVector;        
+    XMLDataElement * m_Parent;
 };
 
-
-class CBTEK_UTILS_DLL XMLReader
+class CBTEK_UTILITY_DLL XMLReader
 {
 
 public:
@@ -397,7 +383,7 @@ public:
      * @return
      */
     XMLDataElement * getElement(const std::string & tagName,
-                                const bool & caseSensitive=false);
+        const bool & caseSensitive = false);
 
     /**
      * @brief find
@@ -406,7 +392,7 @@ public:
      * @return
      */
     XMLDataElement * find(const std::string & name,
-                          const bool & caseSensitive=false);
+        const bool & caseSensitive = false);
 
     /**
      * @brief getNumElements
@@ -415,7 +401,7 @@ public:
      * @return
      */
     size_t  getNumElements(const std::string & tagName,
-                           const bool & caseSensitive=false);
+        const bool & caseSensitive = false);
 
 
     /**
@@ -425,7 +411,7 @@ public:
      * @return
      */
     bool exists(const std::string & tagName,
-                const bool & caseSensitive=false);
+        const bool & caseSensitive = false);
 
     /**
      * @brief toString
@@ -446,32 +432,10 @@ public:
     const XMLDataElement *getRoot() const;
 
     /**
-     * @brief isValid
-     * @return
-     */
-    bool isValid()const;
-
-    /**
-     * @brief getDepth
-     * @return
-     */
-    size_t getDepth()const;
-
-    /**
      * @brief getNumLines
      * @return
      */
     size_t getNumLines()const;
-
-    /**
-     * @brief reset
-     */
-    void reset();
-
-    /**
-     * @brief clear
-     */
-    void clear();
 
     /**
      * @brief getFirstElement
@@ -482,67 +446,6 @@ public:
 private:
 
     /**
-     * @brief printToString
-     */
-    void printToString();
-
-    /**
-     * @brief parse
-     */
-    void parse();
-
-    /**
-     * @brief sync
-     */
-    void sync();
-
-    /**
-     * @brief parseAttributes
-     * @param attributes
-     * @param element
-     */
-    void parseAttributes(const std::string & attributes, XMLDataElement * element);
-
-    /**
-     * @brief consume
-     */
-    void consume();
-
-    /**
-     * @brief isParsingValid
-     * @return
-     */
-    bool isParsingValid();
-
-    /**
-     * @brief m_Token
-     */
-    char m_Token;
-
-    /**
-     * @brief m_PeekToken
-     */
-    char m_PeekToken;
-
-    /**
-     * @brief processCloseTag
-     */
-    void processCloseTag();
-
-    /**
-     * @brief processOpenTag
-     * @param data
-     */
-    void processOpenTag(const std::string & data);
-
-    /**
-     * @brief printTree
-     * @param element
-     * @param level
-     */
-    void printTree(XMLDataElement * element, size_t level);
-
-    /**
      * @brief getFirst
      * @param node
      * @param name
@@ -550,8 +453,8 @@ private:
      * @return
      */
     XMLDataElement * getFirst(XMLDataElement *node,
-                              const std::string name,
-                              const bool & caseSensitive=false);
+        const std::string name,
+        const bool & caseSensitive = false);
 
     /**
      * @brief getChild
@@ -561,30 +464,14 @@ private:
      * @return
      */
     XMLDataElement * getChild(XMLDataElement * parent,
-                              const std::string &childName,
-                              const bool & caseSensitive=false);
+        const std::string &childName,
+        const bool & caseSensitive = false);
 
-
-    bool m_Initialized;
-    size_t m_Depth;
-    size_t m_Index;
-    size_t m_LineCount;
-    size_t m_ColumnCount;
-
-    #ifdef _MSC_VER
-    #   pragma warning( push )
-    #   pragma warning( disable : 4251 )
-    #endif
-        XMLDataElement m_Root;
-        XMLDataElement * m_Current;
-        std::string m_ParseString;
-        std::ostringstream m_OutputStream;
-    #ifdef _MSC_VER
-    #   pragma warning( pop )
-    #endif
+    tinyxml2::XMLDocument m_document;
+    XMLDataElementPtr m_root;
 };
 
-class XMLUtils
+class CBTEK_UTILITY_DLL XMLUtils
 {
 public:
     /**
@@ -602,9 +489,9 @@ public:
     static std::string getDecodedString(const std::string & xmlString);
 };
 
-class XMLStreamWriter
+class CBTEK_UTILITY_DLL XMLStreamWriter
 {
-    public:
+public:
     //! Constructor for XMLStreamWriter
     XMLStreamWriter(std::ostream & out);
 
@@ -613,7 +500,7 @@ class XMLStreamWriter
      * @param version
      * @param flag
      */
-    void writeStartDocument(const std::string & version="1.0", bool flag=true);
+    void writeStartDocument(const std::string & version = "1.0", bool flag = true);
 
     /**
      * @brief writeStartElementNoAttributes
@@ -652,12 +539,19 @@ class XMLStreamWriter
      */
     template<typename ValueType>
     void writeLastAttribute(const std::string & attributeName,
-                            const ValueType& attributeValue)
+        const ValueType& attributeValue)
     {
 
-        writeAttribute(attributeName,attributeValue);
-        m_out<<">"<<std::endl;
+        writeAttribute(attributeName, attributeValue);
+        m_out << ">" << std::endl;
     }
+
+
+    /**
+     * @brief setCurrentTab
+     * @param tab
+     */
+    void setCurrentTab(int tab);
 
 
     /**
@@ -673,11 +567,11 @@ class XMLStreamWriter
      */
     template<typename ValueType>
     void writeLastAttributeAndCloseTag(const std::string & attributeName,
-                                       const ValueType & attributeValue)
+        const ValueType & attributeValue)
     {
-        writeAttribute(attributeName,attributeValue);
-        m_out<<"/>"<<std::endl;
-        if (m_currentTab > 0 )
+        writeAttribute(attributeName, attributeValue);
+        m_out << "/>" << std::endl;
+        if (m_currentTab > 0)
         {
             m_currentTab--;
         }
@@ -690,25 +584,32 @@ class XMLStreamWriter
      */
     template<typename ValueType>
     void writeAttribute(const std::string &attributeName,
-                        const ValueType &attributeValue)
+                        const ValueType &attributeValue,
+                        bool lastAttribute = false)
     {
-        m_out<<" "<<attributeName<<"=\""<<attributeValue<<"\"";
+        m_out << " " << attributeName << "=\"" << XMLUtils::getEncodedString(StringUtils::toString(attributeValue)) << "\"";
+        if (lastAttribute)
+        {
+            m_out << ">" << std::endl;
+        }
     }
 
     /**
-     * @brief setCurrentTab
-     * @param currentTab
+     * @brief out
+     * @return
      */
-    void setCurrentTab(size_t currentTab);
+    std::ostream & stream();
 
     //! Destructor
     ~XMLStreamWriter();
 
 private:
     void writeTabs();
+    void decrementTab();
+    void incrementTab();
     std::string m_currentNS;
     size_t m_currentTab;
     std::ostream & m_out;
 };
 
-}}}//namespace
+END_NAMESPACE_CBTEK_UTILITY

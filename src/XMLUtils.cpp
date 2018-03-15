@@ -1006,11 +1006,6 @@ void XMLStreamWriter::writeText(const std::string &text)
     m_out << text;
 }
 
-void XMLStreamWriter::setCurrentTab(size_t currentTab)
-{
-    m_currentTab = currentTab;
-}
-
 XMLStreamWriter::~XMLStreamWriter()
 {
 

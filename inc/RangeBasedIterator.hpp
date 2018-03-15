@@ -1,16 +1,14 @@
 /*
-    RangeBasedIterator.hpp
-    
-
+    RangeBasedIterator.hpp    
 */
 #pragma once
 #include <string>
 
 #include "UtilityCommon.hpp"
 
-BEGIN_NAMESPACE_CBTEK_COMMON_UTILITY
+BEG_NAMESPACE_CBTEK_UTILITY
 template <typename Value, typename ValueContainer>
-class CBTEK_UTILS_DLL RangeBasedIterator
+class CBTEK_UTILITY_DLL RangeBasedIterator
 {
 public:
     RangeBasedIterator(const ValueContainer& container, size_t index = 0)
@@ -40,4 +38,4 @@ private:
     const ValueContainer& m_container;
     size_t m_index;
 };
-END_NAMESPACE_CBTEK_COMMON_UTILITY
+END_NAMESPACE_CBTEK_UTILITY

@@ -1,31 +1,4 @@
-/**
-MIT License
-
-Copyright (c) 2016 cbtek
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-*/
-
-
-#ifndef _CBTEK_COMMON_UTILITY_OBJECTMAP_HPP_
-#define _CBTEK_COMMON_UTILITY_OBJECTMAP_HPP_
+#pragma once
 
 #include <map>
 #include <cstdint>
@@ -33,19 +6,17 @@ SOFTWARE.
 #include "UtilityCommon.hpp"
 #include "ObjectList.hpp"
 
-namespace cbtek {
-namespace common {
-namespace utility {
+BEG_NAMESPACE_CBTEK_UTILITY
 
 template <typename K,typename V>
-class CBTEK_UTILS_DLL ObjectMap : public std::map<K,V>
+class CBTEK_UTILITY_DLL ObjectMap : public std::map<K,V>
 {
 
 public:
 
-    common::utility::ObjectList<K> getKeys() const;
+    ObjectList<K> getKeys() const;
 
-    common::utility::ObjectList<V> getValues() const;
+    ObjectList<V> getValues() const;
 
     void insert(const K & key,const V & value);      
 
@@ -105,10 +76,10 @@ V & ObjectMap<K,V>::first()
 }
 
 template <typename K,typename V>
-common::utility::ObjectList<K> ObjectMap<K,V>::getKeys() const
+ObjectList<K> ObjectMap<K,V>::getKeys() const
 {
 
-    common::utility::ObjectList<K> keys;
+    ObjectList<K> keys;
     typename std::map<K,V>::const_iterator itStart = this->begin();
     typename std::map<K,V>::const_iterator itEnd = this->end();
 
@@ -121,9 +92,9 @@ common::utility::ObjectList<K> ObjectMap<K,V>::getKeys() const
 }
 
 template <typename K,typename V>
-common::utility::ObjectList<V> ObjectMap<K,V>::getValues() const
+ObjectList<V> ObjectMap<K,V>::getValues() const
 {
-   common::utility::ObjectList<V> values;
+   ObjectList<V> values;
    typename std::map<K,V>::const_iterator itStart = this->begin();
    typename std::map<K,V>::const_iterator itEnd = this->end();
 
@@ -326,16 +297,14 @@ V & ObjectMap<K,V>::constIterValueRef()const
     return m_constIter->second;
 }
 
-typedef common::utility::ObjectMap<std::uint64_t,std::uint64_t> UInt64Map;
-typedef common::utility::ObjectMap<std::uint32_t,std::uint32_t> UInt32Map;
-typedef common::utility::ObjectMap<std::uint16_t,std::uint16_t> UInt16Map;
-typedef common::utility::ObjectMap<std::uint8_t,std::uint8_t> UInt8Map;
-typedef common::utility::ObjectMap<std::int64_t,std::int64_t> Int64Map;
-typedef common::utility::ObjectMap<std::int32_t,std::int32_t> Int32Map;
-typedef common::utility::ObjectMap<std::int16_t,std::int16_t> Int16Map;
-typedef common::utility::ObjectMap<std::int8_t,std::int8_t> Int8Map;
-typedef common::utility::ObjectMap<std::string,std::string> StringMap;
+typedef ObjectMap<std::uint64_t,std::uint64_t> UInt64Map;
+typedef ObjectMap<std::uint32_t,std::uint32_t> UInt32Map;
+typedef ObjectMap<std::uint16_t,std::uint16_t> UInt16Map;
+typedef ObjectMap<std::uint8_t,std::uint8_t> UInt8Map;
+typedef ObjectMap<std::int64_t,std::int64_t> Int64Map;
+typedef ObjectMap<std::int32_t,std::int32_t> Int32Map;
+typedef ObjectMap<std::int16_t,std::int16_t> Int16Map;
+typedef ObjectMap<std::int8_t,std::int8_t> Int8Map;
+typedef ObjectMap<std::string,std::string> StringMap;
 
-}}} //namespace
-
-#endif // _CBTEK_COMMON_UTILITY_OBJECTMAP_HPP_
+END_NAMESPACE_CBTEK_UTILITY

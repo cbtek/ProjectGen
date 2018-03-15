@@ -1,28 +1,3 @@
-/**
-MIT License
-
-Copyright (c) 2016 cbtek
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-*/
-
 #pragma once
 
 #include <chrono>
@@ -30,12 +5,9 @@ SOFTWARE.
 #include <sstream>
 #include <string>
 
-#include "utility/inc/UtilityCommon.hpp"
+#include "UtilityCommon.hpp"
 
-namespace cbtek{
-namespace common{
-namespace utility{
-
+BEG_NAMESPACE_CBTEK_UTILITY
 /**
  * @brief This embedded class contains utilities in support of DateTimeUtils
  * Although the DRY is violated, this class can stay dependency free and be used
@@ -170,7 +142,7 @@ public:
  * @brief The DateEntity class represents a single date object
  * for use in DateTimeUtils and DateUtils
  */
-class CBTEK_UTILS_DLL DateEntity
+class CBTEK_UTILITY_DLL DateEntity
 {
 
 public:
@@ -439,7 +411,7 @@ private:
  * @brief The TimeEntity class represents a single time object
  * for use in DateTimeUtils and TimeUtils
  */
-class CBTEK_UTILS_DLL TimeEntity
+class CBTEK_UTILITY_DLL TimeEntity
 {
 public:
 
@@ -708,10 +680,30 @@ typedef std::chrono::seconds Seconds;
  * @brief The TimeUtils class contains useful functions for dealing
  * the TimeEntity class
  */
-class TimeUtils
+class CBTEK_UTILITY_DLL TimeUtils
 {
 
 public:
+
+    /**
+     * @brief tick
+     * @return
+     */
+    static double tick()
+    {
+        return  std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+    }
+
+    /**
+     * @brief tock
+     * @param tick_value
+     * @return
+     */
+    static double tock(double tick_value)
+    {
+        return (tick() - tick_value);
+    }
+
     /**
      * @brief toString
      * @param value
@@ -742,7 +734,7 @@ public:
     {
         HighResolutionTimePoint tp = HighResolutionClock::now();
         Seconds secs= std::chrono::duration_cast<Seconds>(tp.time_since_epoch());
-        return secs.count();
+        return static_cast<double>(secs.count());
     }
 
     /**
@@ -753,7 +745,7 @@ public:
     {
         HighResolutionTimePoint tp = HighResolutionClock::now();
         Microseconds secs= std::chrono::duration_cast<Microseconds>(tp.time_since_epoch());
-        return secs.count();
+        return static_cast<double> (secs.count());
     }
 
     /**
@@ -775,7 +767,7 @@ public:
     {
         HighResolutionTimePoint tp = HighResolutionClock::now();
         Milliseconds secs= std::chrono::duration_cast<Milliseconds>(tp.time_since_epoch());
-        return secs.count();
+        return static_cast<double>(secs.count());
     }
 
     /**
@@ -821,10 +813,21 @@ public:
     static TimeEntity getCurrentTime()
     {
         time_t t = time(0);
-        struct tm * now = localtime( & t );
+        struct tm * now;
+        #ifdef __STDC_WANT_LIB_EXT1__
+                localtime_s(now, &t);
+        #else
+			#if (_MSC_VER >= 1900) 
+				localtime_s(now, &t);
+			#else
+				now = localtime(&t);
+			#endif                
+        #endif
+
         return TimeEntity(static_cast<size_t>(now->tm_hour),
                           static_cast<size_t>(now->tm_min),
                           static_cast<size_t>(now->tm_sec));
+
     }
 
     /**
@@ -835,9 +838,9 @@ public:
     static TimeEntity getTimeFromSeconds(const uint64_t &secs)
     {
         TimeEntity tm;
-        tm.setHour(secs/3600);
-        tm.setMinute((secs%3600)/60);
-        tm.setSecond((secs%3600)%60);
+        tm.setHour(static_cast<size_t>(secs/3600));
+        tm.setMinute(static_cast<size_t>(((secs%3600)/60)));
+        tm.setSecond(static_cast<size_t>(((secs%3600)%60)));
         return tm;
     }
 
@@ -868,12 +871,55 @@ public:
     {
         return to12HourTimeString(getCurrentTime());
     }
+
+    /**
+     * @brief toHMSDisplayString
+     * @param ms
+     * @return
+     */
+    static std::string toHMSDisplayString(uint64_t milliseconds)
+    {
+        int seconds = (int) (milliseconds / 1000) % 60 ;
+        int minutes = (int) ((milliseconds / (1000*60)) % 60);
+        int hours   = (int) ((milliseconds / (1000*60*60)) % 24);
+        std::ostringstream out;
+        if (hours > 1)
+        {
+            out << hours << " hours, ";
+        }
+        else if (hours == 1)
+        {
+            out << "1 hour, ";
+        }
+
+        if (minutes > 1)
+        {
+            out << minutes << " minutes, ";
+        }
+        else if (minutes == 1)
+        {
+            out << "1 minute, ";
+        }
+        if (seconds > 1)
+        {
+            out << seconds << " seconds";
+        }
+        else if (seconds == 1)
+        {
+            out << "1 second";
+        }
+        else
+        {
+            out << milliseconds << " milliseconds";
+        }
+        return out.str();
+    }
 };
 
 /**
  * @brief The DateUtils class
  */
-class DateUtils
+class CBTEK_UTILITY_DLL DateUtils
 {
 
 private:
@@ -939,7 +985,16 @@ public:
     static DateEntity getCurrentDate()
     {
         time_t t = time(0);
-        struct tm * now = localtime( & t );
+        struct tm * now;
+		#ifdef __STDC_WANT_LIB_EXT1__
+				localtime_s(now, &t);
+		#else
+			#if (_MSC_VER >= 1900) 
+					localtime_s(now, &t);
+			#else
+					now = localtime(&t);
+			#endif                
+		#endif
         return DateEntity(static_cast<size_t>(now->tm_mon + 1),
                           static_cast<size_t>(now->tm_mday),
                           static_cast<size_t>(now->tm_year + 1900));
@@ -966,7 +1021,7 @@ public:
 };
 
 
-class DateTimeUtils
+class CBTEK_UTILITY_DLL DateTimeUtils
 {
 
 public:
@@ -1024,21 +1079,6 @@ public:
         return (DateUtils::toShortDateString(dateEntity,"yyyymmdd")+"T"+std::to_string(timeEntity.toTimeInteger()));
     }
 
-    /**
-     * @brief getUTCTimeStampString
-     * @return
-     */
-    static std::string getUTCTimeStampString()
-    {
-         time_t rawtime;
-         struct tm * ptm;
-         time ( &rawtime );
-         ptm = gmtime ( &rawtime );
 
-         TimeEntity timeEntity(ptm->tm_hour,ptm->tm_min,ptm->tm_sec);
-         DateEntity dateEntity(ptm->tm_mon, ptm->tm_mday,ptm->tm_year);
-         return getTimeStamp(dateEntity,timeEntity);
-    }
 };
-
-}}} //namespace
+END_NAMESPACE_CBTEK_UTILITY

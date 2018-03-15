@@ -23,14 +23,14 @@ SOFTWARE.
 
 */
 
-#include "utility/inc/XMLUtils.h"
-#include "utility/inc/FileUtils.hpp"
-
-#include "contrib/catch/catch.hpp"
+#include "DILIsymUtility/inc/StringUtils.hpp"
+#include "DILIsymUtility/inc/FileUtils.hpp"
+#include "DILIsymUtility/inc/XMLUtils.h"
+#include <catch/catch.hpp>
 
 #include <sstream>
 
-using namespace cbtek::common::utility;
+USE_NAMESPACE_CBTEK_UTILITY
 static const std::string dataFolder = "testData/utility/";
 
 TEST_CASE("Testing XMLReader::loadString","[utility::XMLReader]")

@@ -23,11 +23,12 @@ SOFTWARE.
 
 */
 
-#include "utility/inc/StringUtils.hpp"
-#include "utility/inc/FileUtils.hpp"
-#include "contrib/catch/catch.hpp"
+#include "DILIsymUtility/inc/StringUtils.hpp"
+#include "DILIsymUtility/inc/FileUtils.hpp"
+#include <catch/catch.hpp>
 
-using namespace cbtek::common::utility;
+USE_NAMESPACE_CBTEK_UTILITY
+
 static const std::string dataFolder = "testData/utility/";
 
 TEST_CASE("Testing StringUtils::isNumeric","[utility::StringUtils]")
@@ -156,4 +157,34 @@ TEST_CASE("Testing StringUtils::toString","[utility::StringUtils")
     REQUIRE(StringUtils::toString(value5,false) == "-262315");
     REQUIRE(StringUtils::toString(value6,2,false) == "-903172.01");
     REQUIRE(StringUtils::toString(value7,2,false) == "102234.00");
+}
+
+TEST_CASE("Testing StringUtils::multisplit","[utility::StringUtils]")
+{
+    std::string str = "test,are!you?happy?with!,me";
+    std::vector<std::string> delims {",", "!", "?"};
+    std::vector<std::string> output = StringUtils::multisplit(str,delims);
+    REQUIRE(output.size() == 7);
+
+    //Output items ordered by delimiter NOT by order in original string
+    //Items split by comma
+    REQUIRE(output[0] == "test");
+    REQUIRE(output[1] == "me");
+
+    //Items split by exclaimation
+    REQUIRE(output[2] == "are");
+    REQUIRE(output[3] == "");
+
+    //Items split by question
+    REQUIRE(output[4] == "you");
+    REQUIRE(output[5] == "happy");
+    REQUIRE(output[6] == "with");
+}
+
+
+TEST_CASE("Testing StringUtils::multiremove","[utility::StringUtils]")
+{
+    std::string input = "xg<WHATSUP>test,are!you?happy?with!,me";
+    std::string output = StringUtils::multiremove(input,{",", "!", "?","<WHATSUP>"});
+    REQUIRE(output == "xgtestareyouhappywithme");
 }
