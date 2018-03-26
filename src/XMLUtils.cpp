@@ -638,4 +638,45 @@ void XMLStreamWriter::incrementTab()
 {
     m_currentTab++;
 }
+
+XMLNameMap::XMLNameMap()
+{
+
+}
+
+void XMLNameMap::load(const std::string &file_path)
+{
+
+}
+
+const XMLNameMapNode &XMLNameMap::operator[](const std::string &key) const
+{
+
+}
+
+XMLNameMapNode &XMLNameMap::operator[](const std::string &key)
+{
+
+}
+
+XMLNameMap::~XMLNameMap()
+{
+
+}
+
+void XMLNameMap::loadNested(const XMLDataElement *root, XMLNameMapNode &parent)
+{
+
+}
+
+const XMLNameMapNode XMLNameMapNode::find(const std::string &address_key) const
+{
+
+}
+
+bool XMLNameMapNode::find(const std::string &address_key, XMLNameMapNode &node) const
+{
+
+}
+
 END_NAMESPACE_CBTEK_UTILITY

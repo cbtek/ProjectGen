@@ -16,7 +16,7 @@
 
 //utility headers
 #include "Exception.hpp"
-#include "FileUtils.hpp"
+#include "FileUtils.h"
 #include "StringUtils.h"
 #include "UtilityCommon.hpp"
 
@@ -30,6 +30,60 @@ using XMLDataElementPtr = std::shared_ptr<XMLDataElement>;
 typedef std::vector<XMLDataElementPtr> ChildElementVector;
 typedef std::vector<std::pair<std::string, std::string> > AttributeVector;
 
+struct XMLNameMapNode
+{
+    std::string value;
+    std::string key;
+    std::string id;
+    std::string tag;
+    std::string alias;
+    std::string type;
+    std::string description;
+    std::vector<XMLNameMapNode> children;
+    std::map<std::string,std::string> custom_attributes;
+    const XMLNameMapNode find(const std::string &address_key) const;
+    bool find(const std::string &address_key, XMLNameMapNode &node) const;
+};
+
+class XMLNameMap
+{
+public:
+   /**
+    * @brief XMLNameMap
+    */
+    XMLNameMap();
+
+    /**
+     * @brief load
+     * @param file_path
+     */
+    void load(const std::string &file_path);
+
+    /**
+     * @brief operator []
+     * @param key
+     * @return
+     */
+    const XMLNameMapNode &operator[](const std::string &key) const;
+
+    /**
+     * @brief operator []
+     * @param key
+     * @return
+     */
+    XMLNameMapNode &operator[](const std::string &key);
+
+
+    /**
+     * Destructor for this XMLNameMap
+     */
+    ~XMLNameMap();
+private:
+    XMLNameMapNode m_root_node;
+    void loadNested(const XMLDataElement *root,
+                    XMLNameMapNode & parent);
+
+};
 class CBTEK_UTILITY_DLL XMLDataElement
 {
 public:

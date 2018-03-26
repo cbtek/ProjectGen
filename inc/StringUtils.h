@@ -4,7 +4,6 @@
 #include "UtilityCommon.hpp"
 
 //std headers
-
 #include <string>
 #include <list>
 #include <map>
@@ -55,9 +54,9 @@ public:
     * within input_string?
 	*/
     static void replaceInPlace(std::string &input_string,
-        const std::string &old_str,
-        const std::string &new_str,
-        bool is_case_sensitive = c_DEFAULT_CASE_SENSITIVE);
+                               const std::string &old_str,
+                               const std::string &new_str,
+                               bool is_case_sensitive = c_DEFAULT_CASE_SENSITIVE);
 
 
 	/**

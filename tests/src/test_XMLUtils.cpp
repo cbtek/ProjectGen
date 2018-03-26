@@ -24,7 +24,7 @@ SOFTWARE.
 */
 
 #include "utility/inc/StringUtils.h"
-#include "utility/inc/FileUtils.hpp"
+#include "utility/inc/FileUtils.h"
 #include "utility/inc/XMLUtils.h"
 #include "external/catch/inc/catch.hpp"
 

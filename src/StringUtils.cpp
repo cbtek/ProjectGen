@@ -1,5 +1,7 @@
+//utility headers
 #include "StringUtils.h"
 
+//std headers
 #include <bitset>
 #include <cstdlib>
 #include <ctype.h>
@@ -11,8 +13,6 @@
 #include <iostream>
 #include <sstream>
 
-#include <stdio.h>
-#include <stdlib.h>
 
 typedef std::chrono::system_clock SystemClock;
 typedef std::chrono::high_resolution_clock HighResolutionClock;
