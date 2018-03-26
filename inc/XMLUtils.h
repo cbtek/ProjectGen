@@ -17,11 +17,11 @@
 //utility headers
 #include "Exception.hpp"
 #include "FileUtils.hpp"
-#include "StringUtils.hpp"
+#include "StringUtils.h"
 #include "UtilityCommon.hpp"
 
 //tinyxml headers
-#include "DILIsymUtility/external/tinyxml2/inc/tinyxml2.h"
+#include "utility/external/tinyxml2/inc/tinyxml2.h"
 
 BEG_NAMESPACE_CBTEK_UTILITY
 
@@ -368,13 +368,6 @@ public:
      * @return
      */
     bool load(const std::string & filename);
-
-    /**
-     * @brief loadFromString
-     * @param data
-     * @return
-     */
-    bool loadFromString(const std::string & data);
 
     /**
      * @brief getElement

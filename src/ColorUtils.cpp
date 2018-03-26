@@ -26,15 +26,14 @@ SOFTWARE.
 #include "utility/inc/ColorUtils.h"
 
 #include "Random.h"
-#include "StringUtils.hpp"
+#include "StringUtils.h"
+
+#include <sstream>
+#include <iostream>
 
 using namespace cbtek::common::utility;
 
-namespace cbtek {
-namespace common {
-namespace utility {
-
-
+BEG_NAMESPACE_CBTEK_UTILITY
 inline static std::string toHex(int value)
 {
     std::ostringstream stream;
@@ -1704,4 +1703,4 @@ void ColorFactory::resetNextColor()
     colors::NEXT_COLOR=colors::ColorType(0);
 }
 
-}}}//namespace
+END_NAMESPACE_CBTEK_UTILITY

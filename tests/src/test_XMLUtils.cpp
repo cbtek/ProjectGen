@@ -23,10 +23,10 @@ SOFTWARE.
 
 */
 
-#include "DILIsymUtility/inc/StringUtils.hpp"
-#include "DILIsymUtility/inc/FileUtils.hpp"
-#include "DILIsymUtility/inc/XMLUtils.h"
-#include <catch/catch.hpp>
+#include "utility/inc/StringUtils.h"
+#include "utility/inc/FileUtils.hpp"
+#include "utility/inc/XMLUtils.h"
+#include "external/catch/inc/catch.hpp"
 
 #include <sstream>
 
@@ -37,7 +37,8 @@ TEST_CASE("Testing XMLReader::loadString","[utility::XMLReader]")
 {
     XMLReader reader;
     std::string xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\r\n<worksheet xmlns=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" mc:Ignorable=\"x14ac\" xmlns:x14ac=\"http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac\"><dimension ref=\"A1:B4\"/><sheetViews><sheetView workbookViewId=\"0\"/></sheetViews><sheetFormatPr defaultRowHeight=\"15\" x14ac:dyDescent=\"0.25\"/><sheetData><row r=\"1\" spans=\"1:2\" x14ac:dyDescent=\"0.25\"><c r=\"A1\"><v>500</v></c><c r=\"B1\"><v>10</v></c></row><row r=\"2\" spans=\"1:2\" x14ac:dyDescent=\"0.25\"><c r=\"A2\"><v>100</v></c><c r=\"B2\"><v>100</v></c></row><row r=\"3\" spans=\"1:2\" x14ac:dyDescent=\"0.25\"><c r=\"A3\"><v>100</v></c><c r=\"B3\"><v>2</v></c></row><row r=\"4\" spans=\"1:2\" x14ac:dyDescent=\"0.25\"><c r=\"A4\"><v>888</v></c><c r=\"B4\"><v>887</v></c></row></sheetData><pageMargins left=\"0.7\" right=\"0.7\" top=\"0.75\" bottom=\"0.75\" header=\"0.3\" footer=\"0.3\"/></worksheet>";
-    reader.loadFromString(xml);
+    FileUtils::writeFileContents("test.xml",xml);
+    reader.load("test.xml");
     XMLDataElement* element = reader.getElement("worksheet");
     REQUIRE(element != NULL);
     XMLDataElement* child = element->getChild("sheetData");
@@ -47,6 +48,7 @@ TEST_CASE("Testing XMLReader::loadString","[utility::XMLReader]")
     child = child->getChild("c");
     REQUIRE(child != NULL);
     REQUIRE(child->getChildElementData("v") == "500");
+    FileUtils::deleteFile("test.xml");
 }
 
 TEST_CASE("Testing XMLReader::getElement","[utility::XMLReader")
@@ -57,9 +59,6 @@ TEST_CASE("Testing XMLReader::getElement","[utility::XMLReader")
     FileUtils::writeFileContents(tempFile,xml.str());
     XMLReader reader;
     reader.load(tempFile);
-    FileUtils::deleteFile(tempFile);
-    std::string data = FileUtils::getFileContents(tempFile);
-    reader.loadFromString(data);
     const XMLDataElement * root = reader.getElement("XML");
     const XMLDataElement * child = reader.getElement("XML.Element");
     REQUIRE(root!=NULL);
@@ -67,4 +66,5 @@ TEST_CASE("Testing XMLReader::getElement","[utility::XMLReader")
     REQUIRE(StringUtils::equals(root->getElementName(),"XML"));
     REQUIRE(child->getAttributeValue("id") == "test");
 
+    FileUtils::deleteFile(tempFile);
 }

@@ -2,7 +2,7 @@
 # CMakeLists file for test_DILIsymUtility
 #==============================================================================
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CURR_TARGET test_DILIsymUtility)
+set(CURR_TARGET test_cbtek_utility)
 set(CURR_TARGET_SOURCES "${CURR_TARGET}_SOURCES")
 set(CURR_TARGET_HEADERS"${CURR_TARGET}_HEADERS")
 

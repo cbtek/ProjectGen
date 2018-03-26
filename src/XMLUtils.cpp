@@ -1,10 +1,9 @@
-#include "XMLUtils.h"
-#include "StringUtils.hpp"
-#include "UtilityCommon.hpp"
-#include "tinyxml2.h"
+#include "utility/inc/XMLUtils.h"
+#include "utility/inc/UtilityCommon.hpp"
+#include "utility/external/tinyxml2/inc/tinyxml2.h"
+#include "utility/inc/StringUtils.h"
 
-BEG_NAMESPACE_DSSI_UTILITY
-
+BEG_NAMESPACE_CBTEK_UTILITY
 XMLDataElement::XMLDataElement()
 {
     m_Parent = nullptr;
@@ -639,5 +638,4 @@ void XMLStreamWriter::incrementTab()
 {
     m_currentTab++;
 }
-
-END_NAMESPACE_DSSI_UTILITY
+END_NAMESPACE_CBTEK_UTILITY

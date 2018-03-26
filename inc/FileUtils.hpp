@@ -11,7 +11,7 @@
 #include <cstring>
 
 #include "Random.h"
-#include "StringUtils.hpp"
+#include "StringUtils.h"
 #include "Exception.hpp"
 #include "DateTimeUtils.hpp"
 

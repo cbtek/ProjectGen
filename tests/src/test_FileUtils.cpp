@@ -23,9 +23,9 @@ SOFTWARE.
 
 */
 
-#include "DILIsymUtility/inc/StringUtils.hpp"
-#include "DILIsymUtility/inc/FileUtils.hpp"
-#include <catch/catch.hpp>
+#include "utility/inc/StringUtils.h"
+#include "utility/inc/FileUtils.hpp"
+#include "external/catch/inc/catch.hpp"
 
 USE_NAMESPACE_CBTEK_UTILITY
 
