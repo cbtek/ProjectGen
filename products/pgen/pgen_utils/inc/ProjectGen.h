@@ -26,9 +26,7 @@ SOFTWARE.
 
 */
 
-#ifndef _CBTEK_PRODUCTS_DEVELOPMENT_CMAKE_PROJECT_STUDIO_PRODUCTS_PROJECT_GENERATOR_PROJECTGEN_H
-#define _CBTEK_PRODUCTS_DEVELOPMENT_CMAKE_PROJECT_STUDIO_PRODUCTS_PROJECT_GENERATOR_PROJECTGEN_H
-
+#pragma once
 #include <string>
 
 
@@ -49,11 +47,11 @@ enum class ProjectGenType
 class ProjectGen 
 {
 public:
+
     /**
      * @brief Constructor for ProjectGen
      *  Detailed description for ProjectGen
      */
-
     ProjectGen(ProjectGenType type,
                const std::string & projectName,
                const std::string & path,
@@ -64,15 +62,24 @@ public:
     ~ProjectGen();	
 private:
 
+    /**
+     * @brief isValidTemplatePath Attempts to validate location of share folder
+     * @param path
+     * @return
+     */
     bool isValidTemplatePath(const std::string &path);
-    void buildProject();
-    bool m_enableLogging;
 
+    /**
+     * @brief buildProject
+     */
+    void buildProject();
+
+
+    bool m_enableLogging;
     ProjectGenType m_type;
     std::string m_name;
     std::string m_path;
-    std::string m_buildCMakePath;
-    std::string m_flagsCMakePath;
+    std::string m_buildCMakePath;    
     std::string m_cppLibCMakePath;
     std::string m_qtLibCMakePath;
     std::string m_cppAppCMakePath;
@@ -83,6 +90,4 @@ private:
 
 };
 }}}}//end namespace
-
-#endif // _CBTEK_PRODUCTS_DEVELOPMENT_CMAKE_PROJECT_STUDIO_PRODUCTS_PROJECT_GENERATOR_PROJECTGEN_H
 

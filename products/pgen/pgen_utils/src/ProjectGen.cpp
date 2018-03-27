@@ -30,8 +30,9 @@ SOFTWARE.
 //----------------------------------------
 #include "ProjectGen.h"
 
-#include "utility/inc/FileUtils.hpp"
-#include "utility/inc/SystemUtils.hpp"
+#include "utility/inc/FileUtils.h"
+#include "utility/inc/SystemUtils.h"
+#include "utility/inc/StringUtils.h"
 
 using namespace cbtek::common::utility;
 
@@ -66,10 +67,11 @@ void ProjectGen::generate()
     }
 
     #ifdef __gnu_linux__
-        if (isValidTemplatePath(SystemUtils::getApplicationDirectory()) ||
+        if (isValidTemplatePath(SystemUtils::getCurrentExecutableDirectory()) ||
             isValidTemplatePath(SystemUtils::getUserHomeDirectory()) ||
             isValidTemplatePath(SystemUtils::getUserAppDirectory()) ||
-            isValidTemplatePath("/usr/local/share"))
+            isValidTemplatePath("/usr/local/share") ||
+            isValidTemplatePath("/usr/share"))
         {
             if (FileUtils::createDirectory(m_path))
             {
@@ -118,20 +120,18 @@ ProjectGen::~ProjectGen()
 
 bool ProjectGen::isValidTemplatePath(const std::string &path)
 {
-    m_buildCMakePath  = FileUtils::buildFilePath(path,".pgen_templates/build.cmake");
-    m_flagsCMakePath  = FileUtils::buildFilePath(path,".pgen_templates/flags.cmake");
-    m_cppLibCMakePath = FileUtils::buildFilePath(path,".pgen_templates/c++_library.cmake");
-    m_qtLibCMakePath  = FileUtils::buildFilePath(path,".pgen_templates/qt_library.cmake");
-    m_cppAppCMakePath = FileUtils::buildFilePath(path,".pgen_templates/c++_application.cmake");
-    m_qtAppCMakePath  = FileUtils::buildFilePath(path,".pgen_templates/qt_application.cmake");
-    m_cppMainPath     = FileUtils::buildFilePath(path,".pgen_templates/c++_main.cpp");
-    m_qtMainPath      = FileUtils::buildFilePath(path,".pgen_templates/qt_main.cpp");
-    m_basePath        = FileUtils::buildFilePath(path,".pgen_templates/base.cmake");
+    m_buildCMakePath  = FileUtils::buildFilePath(path,"share/pgen/build_config.cmake");
+    m_cppLibCMakePath = FileUtils::buildFilePath(path,"share/pgen/c++_library.cmake");
+    m_qtLibCMakePath  = FileUtils::buildFilePath(path,"share/pgen/qt_library.cmake");
+    m_cppAppCMakePath = FileUtils::buildFilePath(path,"share/pgen/c++_application.cmake");
+    m_qtAppCMakePath  = FileUtils::buildFilePath(path,"share/pgen/qt_application.cmake");
+    m_cppMainPath     = FileUtils::buildFilePath(path,"share/pgen/c++_main.cpp");
+    m_qtMainPath      = FileUtils::buildFilePath(path,"share/pgen/qt_main.cpp");
+    m_basePath        = FileUtils::buildFilePath(path,"share/pgen/base.cmake");
 
 
     s_log << "Template Check at "<< path<<std::endl<<"{"<<std::endl;
-    s_log << "\tCMake Build Template Path: "<<m_buildCMakePath<<std::endl;
-    s_log << "\tCMake Flags Template Path: "<<m_flagsCMakePath<<std::endl;
+    s_log << "\tCMake Build Template Path: "<<m_buildCMakePath<<std::endl;    
     s_log << "\tCPP Library Template Path: "<<m_cppLibCMakePath<<std::endl;
     s_log << "\tQt Library Template Path: "<<m_qtLibCMakePath<<std::endl;
     s_log << "\tCPP Application Template Path: "<<m_cppAppCMakePath<<std::endl;
@@ -141,8 +141,7 @@ bool ProjectGen::isValidTemplatePath(const std::string &path)
     s_log << "\tBase project Template Path: "<<m_basePath<<std::endl;
 
         bool hasBaseFiles       =     FileUtils::fileExists(m_buildCMakePath)
-                                   && FileUtils::fileExists(m_basePath)
-                                   && FileUtils::fileExists(m_flagsCMakePath);
+                                   && FileUtils::fileExists(m_basePath);
 
 
     bool hasCPPLibraryFiles     = FileUtils::fileExists(m_cppLibCMakePath);
@@ -168,8 +167,7 @@ void ProjectGen::buildProject()
 {
 
     std::string incPath;
-    std::string srcPath;
-    std::string flagsPath;
+    std::string srcPath;    
     std::string buildPath;
     std::string mainPath;
     std::string cmakePath;
@@ -323,16 +321,9 @@ void ProjectGen::buildProject()
             s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl;
 
 
-            std::string cmakeOutputPath = FileUtils::buildFilePath(m_path,"cmake");
+            std::string cmakeOutputPath = m_path;
 
             //get template content
-            std::string flagsContents = FileUtils::getFileContents(m_flagsCMakePath);
-            if (flagsContents.size() == 0)
-            {
-                s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_flagsCMakePath+"\"") << std::endl;
-                s_log.close();
-                throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_flagsCMakePath+"\"");
-            }
 
 
             std::string buildContents = FileUtils::getFileContents(m_buildCMakePath);
@@ -357,14 +348,11 @@ void ProjectGen::buildProject()
             StringUtils::replaceInPlace(buildContents,"%%PROJECT_NAME%%",m_name);
             StringUtils::replaceInPlace(baseContents,"%%PROJECT_NAME%%",m_name);
 
-            //write contents to new path
-            flagsPath = FileUtils::buildFilePath(cmakeOutputPath,"flags.cmake");
+            //write contents to new path            
             buildPath = FileUtils::buildFilePath(cmakeOutputPath,"build.cmake");
-            cmakePath = FileUtils::buildFilePath(m_path,"CMakeLists.txt");
-            FileUtils::writeFileContents(flagsPath,flagsContents);
+            cmakePath = FileUtils::buildFilePath(m_path,"CMakeLists.txt");            
             FileUtils::writeFileContents(buildPath,buildContents);
-            FileUtils::writeFileContents(cmakePath,baseContents);
-            s_log << "\tCreating path at \""<<flagsPath<<"\""<<std::endl;
+            FileUtils::writeFileContents(cmakePath,baseContents);            
             s_log << "\tCreating path at \""<<buildPath<<"\""<<std::endl;
             s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl;
 

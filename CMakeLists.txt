@@ -36,5 +36,3 @@ add_subdirectory("${PROJECT_SOURCE_DIR}/products/pgen/pgen")
 if (BUILD_PGEN_QT)
     add_subdirectory("${PROJECT_SOURCE_DIR}/products/pgen/pgen_qt")
 endif()
-
-
