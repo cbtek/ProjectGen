@@ -29,7 +29,7 @@ add_library(${CURR_TARGET}
 # so that the exe can see them
 add_custom_command(TARGET ${CURR_TARGET} POST_BUILD
                  COMMAND ${CMAKE_COMMAND} -E copy_directory
-                 ${CMAKE_CURRENT_SOURCE_DIR}/.pgen_templates $<TARGET_FILE_DIR:${CURR_TARGET}>/.pgen_templates)
+                 ${CMAKE_CURRENT_SOURCE_DIR}/share $<TARGET_FILE_DIR:${CURR_TARGET}>/share)
 
 
 #==============================================================================
@@ -43,7 +43,7 @@ else()
     else()
             install(TARGETS ${CURR_TARGET} LIBRARY DESTINATION lib)
     endif()
-    install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/.pgen_templates DESTINATION share)
+    install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/share DESTINATION share)
 endif()
 
 #install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/.pgen_templates DESTINATION $ENV{HOME} PATTERN "*" PERMISSIONS WORLD_READ WORLD_WRITE)

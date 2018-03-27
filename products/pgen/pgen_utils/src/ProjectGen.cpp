@@ -349,7 +349,7 @@ void ProjectGen::buildProject()
             StringUtils::replaceInPlace(baseContents,"%%PROJECT_NAME%%",m_name);
 
             //write contents to new path            
-            buildPath = FileUtils::buildFilePath(cmakeOutputPath,"build.cmake");
+            buildPath = FileUtils::buildFilePath(cmakeOutputPath,"build_config.cmake");
             cmakePath = FileUtils::buildFilePath(m_path,"CMakeLists.txt");            
             FileUtils::writeFileContents(buildPath,buildContents);
             FileUtils::writeFileContents(cmakePath,baseContents);            

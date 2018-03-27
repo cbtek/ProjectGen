@@ -38,7 +38,7 @@ using namespace cbtek::products::development::projectgen;
 int main(int argc , char ** argv)
 {        
     CommandLineArgs args("ProjectGen (2018)",argc,argv);
-    args.addSwitch("--project-type","-t",true,"Type of project:\n\t1)CPA - C++ App\n\t2) CPL - C++ Library\n\t3)QTA - Qt Application\n\t4)QTL - Qt Library\n\t5)BASE - CMake Base Project\n");
+    args.addSwitch("--project-type","-t",true,"Type of project:\n\t1)CPA - C++ App\n\t2)CPL - C++ Library\n\t3)QTA - Qt Application\n\t4)QTL - Qt Library\n\t5)BASE - CMake Base Project\n");
     args.addSwitch("--project-name","-n",true,"Name for project");
     args.addSwitch("--project-path","-p",false,"Location to create project. Defaults to current directory (" + SystemUtils::getCurrentDirectory()+"\")");
     args.addSwitch("--debug-log","-d",false,"Saves debug log to file");

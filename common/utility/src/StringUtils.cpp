@@ -667,6 +667,7 @@ std::string StringUtils::repeat(const std::string &input_string,
 {
     std::string return_string;
     repeat(input_string,return_string,repeat_count);
+    return return_string;
 }
 
 void StringUtils::repeat(const std::string &input_string,
