@@ -479,6 +479,7 @@ bool XMLReader::load(const std::string & url)
 {
     m_document.LoadFile(url.c_str());
     m_root = std::make_shared<XMLDataElement>(*m_document.RootElement());
+    return m_document.Error();
 }
 
 std::string XMLReader::toString() const

@@ -538,6 +538,7 @@ std::string FileUtils::getRandomFileName(int length, int extension_length)
     std::string file = getRandomFolderName(length+extension_length);
     file.push_back('.');    
     file.insert(file.begin()+ (file.size()-extension_length),'.');
+    return file;
 }
 
 std::string FileUtils::getFileExtension(const std::string &input_path_string)

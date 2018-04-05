@@ -40,6 +40,9 @@ enum class ProjectGenType
     CODEBASE,
     CPP_APPLICATION,
     CPP_LIBRARY,
+    VS_SOLUTION,
+    VS_APPLICATION,
+    VS_LIBRARY,
     QT_APPLICATION,
     QT_LIBRARY
 };
@@ -84,6 +87,9 @@ private:
     std::string m_qtLibCMakePath;
     std::string m_cppAppCMakePath;
     std::string m_qtAppCMakePath;
+    std::string m_vsAppPath;
+    std::string m_vsLibPath;
+    std::string m_vsSlnPath;
     std::string m_cppMainPath;
     std::string m_qtMainPath;
     std::string m_basePath;

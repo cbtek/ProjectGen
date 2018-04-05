@@ -78,6 +78,13 @@ public:
     static size_t getNumCPUThreads();
 
     /**
+     * @brief execute Simple command to start an external application
+     * @param command Full path to the command to run
+     * @return
+     */
+    static int execute(const std::string &command);
+
+    /**
      * @brief getCurrentDirectory Gets the current directory
      * @return Returns string representing the current directory
      */

@@ -16,7 +16,7 @@ CommandLineArgs::CommandLineArgs(const std::string &title, int argc, char **argv
     m_title = title;
     m_is_case_sensitive = case_sensitive;
     m_help_requested = false;
-    for (size_t a1 = 1; a1 < argc; ++a1)
+    for (int a1 = 1; a1 < argc; ++a1)
     {
         std::string arg = std::string(argv[a1]);
         if (m_help_requested == false)

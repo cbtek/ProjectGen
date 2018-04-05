@@ -3,6 +3,9 @@
 #include "FileUtils.h"
 #include "StringUtils.h"
 
+//Tiny Process Library headers
+#include "external/tiny-process-library/inc/process.hpp"
+
 BEG_NAMESPACE_CBTEK_UTILITY
 std::string SystemUtils::getUserHomeDirectory()
 {
@@ -132,4 +135,9 @@ size_t SystemUtils::getNumCPUThreads()
     return static_cast<size_t>(std::thread::hardware_concurrency());
 }
 
+int SystemUtils::execute(const std::string &command)
+{
+    TinyProcessLib::Process process(command,getCurrentDirectory());
+    return process.get_exit_status();
+}
 END_NAMESPACE_CBTEK_UTILITY

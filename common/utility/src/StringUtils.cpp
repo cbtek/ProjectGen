@@ -663,7 +663,7 @@ std::string StringUtils::textBefore(const std::string &input_string,
 }
 
 std::string StringUtils::repeat(const std::string &input_string,
-                                const size_t &repeat_count)
+                                size_t repeat_count)
 {
     std::string return_string;
     repeat(input_string,return_string,repeat_count);
@@ -672,7 +672,7 @@ std::string StringUtils::repeat(const std::string &input_string,
 
 void StringUtils::repeat(const std::string &input_string,
                          std::string & return_string,
-                         const size_t &repeat_count)
+                         size_t repeat_count)
 {
     for (size_t a1 = 0; a1 < repeat_count; ++a1)
     {

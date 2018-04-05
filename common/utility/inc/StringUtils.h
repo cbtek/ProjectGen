@@ -434,7 +434,7 @@ public:
     * @return Return new string containing repeated input_string
 	*/
     static std::string repeat(const std::string &input_string,
-                              const size_t &repeat_count);
+                              size_t repeat_count);
 
 
     /**
@@ -445,7 +445,7 @@ public:
     */
     static void repeat(const std::string &input_string,
                        std::string & return_string,
-                       const size_t &repeat_count);
+                       size_t repeat_count);
 
 
 	/**

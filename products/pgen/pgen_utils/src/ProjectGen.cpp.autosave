@@ -179,6 +179,10 @@ void ProjectGen::buildProject()
 
     switch(m_type)
     {
+    
+        case ProjectGenType::VS_LIBRARY:
+        {
+        }
         case ProjectGenType::CPP_LIBRARY:
         {
             s_log << "SETTING UP CPP LIBRARY"<<std::endl<<"{"<<std::endl;
