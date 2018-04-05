@@ -2,6 +2,7 @@
 #include "StringUtils.h"
 
 //std headers
+#include <random>
 #include <bitset>
 #include <cstdlib>
 #include <ctype.h>
@@ -924,18 +925,16 @@ void StringUtils::clean(std::vector<std::string> & input_strings)
 
 std::string StringUtils::createUUID(bool include_dashes)
 {
-    std::string uuid;
-    srand(time(NULL));
+    std::string uuid;    
+    std::random_device rng_device;
+    std::mt19937 rng_engine(rng_device());
+    std::uniform_int_distribution<int> ran_percent(0,100);
+    std::uniform_int_distribution<char> ran_dec('0','9');
+    std::uniform_int_distribution<char> ran_alp('A','F');
+
     for (size_t a1 = 0; a1 < 20; ++a1)
     {
-        if (rand() % 100 + 0  > 50)
-        {
-            uuid.push_back((rand() % 'F' + 'A'));
-        }
-        else
-        {
-            uuid.push_back((rand() % '9' + '0'));
-        }
+        uuid.push_back((ran_percent(rng_engine) > 50 ? ran_dec(rng_engine) : ran_alp(rng_engine) ));
     }
 
     HighResolutionTimePoint tp = HighResolutionClock::now();

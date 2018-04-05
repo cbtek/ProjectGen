@@ -21,7 +21,7 @@ void ConsoleUtils::setConsoleColor(ConsoleColors text_color,
     int text = static_cast<int>(text_color);
     int foreground = static_cast<int>(foreground_color);
 
-    #ifdef WINDOWS
+    #ifdef __WIN32
         HANDLE H = GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(H, foreground * 16 + text);
     #else
@@ -39,17 +39,17 @@ void ConsoleUtils::setConsoleColor(ConsoleColors text_color,
 void ConsoleUtils::clearScreen()
 {
 
-#ifdef WINDOWS
-    system("cls");
+    #ifdef WINDOWS
+        system("cls");
     #else
-    system("clear");
+        system("clear");
     #endif
 }
 
 void ConsoleUtils::moveCursor(int row, int column)
 {
 
-#ifdef WINDOWS
+    #ifdef WINDOWS
         COORD Coord;
         Coord.X = column;
         Coord.Y = row;
@@ -89,13 +89,11 @@ char ConsoleUtils::getch_(int echo)
     ch = getchar();
     resetTermios();
     return ch;
-
 }
 
 char ConsoleUtils::getch()
 {
     return getch_(0);
-
 }
 
 char ConsoleUtils::getche()

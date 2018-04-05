@@ -31,8 +31,6 @@ SOFTWARE.
 #include <sstream>
 #include <iostream>
 
-using namespace cbtek::common::utility;
-
 BEG_NAMESPACE_CBTEK_UTILITY
 inline static std::string toHex(int value)
 {

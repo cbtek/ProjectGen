@@ -7,9 +7,6 @@
 
 #include "UtilityCommon.hpp"
 
-BEG_NAMESPACE_CBTEK_UTILITY
-
-
 #if defined (_WIN32) || defined (_WIN64)
     #define WINDOWS
 
@@ -23,7 +20,8 @@ BEG_NAMESPACE_CBTEK_UTILITY
     #include <termios.h>
 #endif
 
-#if defined WINDOWS
+BEG_NAMESPACE_CBTEK_UTILITY
+#if defined __WIN32
     enum ConsoleColors
     {
         Black = 0,

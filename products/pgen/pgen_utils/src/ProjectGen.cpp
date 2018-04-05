@@ -118,6 +118,386 @@ ProjectGen::~ProjectGen()
     s_log.close();
 }
 
+void ProjectGen::buildCMakeCPPCodebase()
+{
+    s_log << "SETTING UP CODEBASE"<<std::endl<<"{"<<std::endl;
+    std::string productsPath = FileUtils::buildFilePath(m_path,"products");
+    std::string commonPath = FileUtils::buildFilePath(m_path,"common");
+    std::string cmakePath = FileUtils::buildFilePath(m_path,"cmake");
+    FileUtils::createDirectory(productsPath);
+    FileUtils::createDirectory(commonPath);
+    FileUtils::createDirectory(cmakePath);
+
+    s_log << "\tCreating path at \""<<productsPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<commonPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl;
+
+
+    std::string cmakeOutputPath = m_path;
+
+    //get template content
+
+
+    std::string buildContents = FileUtils::getFileContents(m_buildCMakePath);
+    if (buildContents.size() == 0)
+    {
+        s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_buildCMakePath+"\"") << std::endl;
+        s_log.close();
+        throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_buildCMakePath+"\"");
+    }
+
+
+    std::string baseContents = FileUtils::getFileContents(m_basePath);
+    if (baseContents.size() == 0)
+    {
+        s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_basePath+"\"") << std::endl;
+        s_log.close();
+        throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_basePath+"\"");
+    }
+
+
+    //replace with project name
+    StringUtils::replaceInPlace(buildContents,"%%PROJECT_NAME%%",m_name);
+    StringUtils::replaceInPlace(baseContents,"%%PROJECT_NAME%%",m_name);
+
+    //write contents to new path
+    std::string buildPath = FileUtils::buildFilePath(cmakeOutputPath,"build_config.cmake");
+    cmakePath = FileUtils::buildFilePath(m_path,"CMakeLists.txt");
+    FileUtils::writeFileContents(buildPath,buildContents);
+    FileUtils::writeFileContents(cmakePath,baseContents);
+    s_log << "\tCreating path at \""<<buildPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl;
+
+
+    //create cpp project
+    std::string contents = FileUtils::getFileContents(m_cppAppCMakePath);
+    std::string mainContents = FileUtils::getFileContents(m_cppMainPath);
+
+    if (contents.size() == 0)
+    {
+        s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppAppCMakePath+"\"") << std::endl;
+        s_log.close();
+        throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppAppCMakePath+"\"");
+    }
+
+    if (mainContents.size() == 0)
+    {
+        s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppMainPath+"\"") << std::endl;
+        s_log.close();
+        throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppMainPath+"\"");
+    }
+
+
+    StringUtils::replaceInPlace(contents,"%%PROJECT_NAME%%","test_"+m_name);
+    std::string folder = FileUtils::buildFilePath(m_path,"products/test_"+m_name);
+    cmakePath = FileUtils::buildFilePath(folder,"CMakeLists.txt");
+    FileUtils::createDirectory(folder);
+    std::string srcPath = FileUtils::buildFilePath(folder,"src");
+    std::string incPath = FileUtils::buildFilePath(folder,"inc");
+    std::string mainPath = FileUtils::buildFilePath(srcPath,"test_"+m_name+".cpp");
+    FileUtils::createDirectory(srcPath);
+    FileUtils::createDirectory(incPath);
+    FileUtils::writeFileContents(cmakePath,contents);
+    FileUtils::writeFileContents(mainPath,mainContents);
+    s_log << "\tCreating path at \""<<folder<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<mainPath<<"\""<<std::endl<<"}"<<std::endl<<std::endl;
+}
+
+void ProjectGen::buildMSVCCPPCodeBase()
+{
+    std::string incPath;
+    std::string srcPath;
+    std::string buildPath;
+    std::string mainPath;
+    s_log << "SETTING UP VS CODEBASE"<<std::endl<<"{"<<std::endl;
+    std::string productsPath = FileUtils::buildFilePath(m_path,"products");
+    std::string commonPath = FileUtils::buildFilePath(m_path,"common");
+    FileUtils::createDirectory(productsPath);
+    FileUtils::createDirectory(commonPath);
+
+    s_log << "\tCreating path at \""<<productsPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<commonPath<<"\""<<std::endl;
+
+    std::string cmakeOutputPath = m_path;
+
+    //get template content
+    std::string slnBuildContents = FileUtils::getFileContents(m_msvcSlnPath);
+    if (slnBuildContents.size() == 0)
+    {
+        s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_msvcSlnPath+"\"") << std::endl;
+        s_log.close();
+        throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_msvcSlnPath+"\"");
+    }
+
+    //replace with project name
+    StringUtils::replaceInPlace(slnBuildContents,"${PROJECT_NAME}",m_name);
+    StringUtils::replaceInPlace(slnBuildContents,"${PROJECT_UUID}",StringUtils::createUUID(true));
+    std::string slnPath = FileUtils::buildFilePath(m_path,m_name + ".sln");
+    FileUtils::writeFileContents(slnPath,slnBuildContents);
+//    //create cpp project
+//    m_name = "test_" + m_name;
+//    std::string contents = FileUtils::getFileContents(m_cppAppCMakePath);
+//    std::string mainContents = FileUtils::getFileContents(m_cppMainPath);
+
+//    if (contents.size() == 0)
+//    {
+//        s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppAppCMakePath+"\"") << std::endl;
+//        s_log.close();
+//        throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppAppCMakePath+"\"");
+//    }
+
+//    if (mainContents.size() == 0)
+//    {
+//        s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppMainPath+"\"") << std::endl;
+//        s_log.close();
+//        throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppMainPath+"\"");
+//    }
+
+
+//    StringUtils::replaceInPlace(contents,"%%PROJECT_NAME%%","test_"+m_name);
+//    std::string folder = FileUtils::buildFilePath(m_path,"products/test_"+m_name);
+//    std:cmakePath = FileUtils::buildFilePath(folder,"CMakeLists.txt");
+//    FileUtils::createDirectory(folder);
+//    srcPath = FileUtils::buildFilePath(folder,"src");
+//    incPath = FileUtils::buildFilePath(folder,"inc");
+//    mainPath = FileUtils::buildFilePath(srcPath,"test_"+m_name+".cpp");
+//    FileUtils::createDirectory(srcPath);
+//    FileUtils::createDirectory(incPath);
+//    FileUtils::writeFileContents(cmakePath,contents);
+//    FileUtils::writeFileContents(mainPath,mainContents);
+//    s_log << "\tCreating path at \""<<folder<<"\""<<std::endl;
+//    s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl;
+//    s_log << "\tCreating path at \""<<mainPath<<"\""<<std::endl<<"}"<<std::endl<<std::endl;
+}
+
+void ProjectGen::buildCMakeCPPApplication()
+{
+    std::string incPath;
+    std::string srcPath;
+    std::string mainPath;
+    std::string cmakePath;
+    s_log << "SETTING UP CPP APPLICATION"<<std::endl<<"{"<<std::endl;
+    std::string contents = FileUtils::getFileContents(m_cppAppCMakePath);
+    std::string mainContents = FileUtils::getFileContents(m_cppMainPath);
+
+    if (contents.size() == 0)
+    {
+        s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppAppCMakePath+"\"") << std::endl;
+        s_log.close();
+        throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppAppCMakePath+"\"");
+    }
+
+    if (mainContents.size() == 0)
+    {
+        s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppMainPath+"\"") << std::endl;
+        s_log.close();
+        throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppMainPath+"\"");
+    }
+
+    StringUtils::replaceInPlace(contents,"%%PROJECT_NAME%%",m_name);
+
+    incPath = FileUtils::buildFilePath(m_path,"inc");
+    srcPath = FileUtils::buildFilePath(m_path,"src");
+    cmakePath = FileUtils::buildFilePath(m_path,"CMakeLists.txt");
+    mainPath = FileUtils::buildFilePath(srcPath,"main.cpp");
+
+    FileUtils::createDirectory(incPath);
+    FileUtils::createDirectory(srcPath);
+    FileUtils::writeFileContents(cmakePath,contents);
+    FileUtils::writeFileContents(mainPath,mainContents);
+
+    s_log << "\tCreating path at \""<<incPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<srcPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<mainPath<<"\""<<std::endl <<"}"<< std::endl<<std::endl;
+}
+
+void ProjectGen::buildCMakeCPPLibrary()
+{
+    std::string incPath;
+    std::string srcPath;
+    std::string cmakePath;
+
+    s_log << "SETTING UP CPP LIBRARY"<<std::endl<<"{"<<std::endl;
+    std::string contents = FileUtils::getFileContents(m_cppLibCMakePath);
+    if (contents.size() == 0)
+    {
+        s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppLibCMakePath+"\"") << std::endl;
+        s_log.close();
+        throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppLibCMakePath+"\"");
+    }
+    StringUtils::replaceInPlace(contents,"%%PROJECT_NAME%%",m_name);
+
+    incPath = FileUtils::buildFilePath(m_path,"inc");
+    srcPath = FileUtils::buildFilePath(m_path,"src");
+    cmakePath = FileUtils::buildFilePath(m_path,"CMakeLists.txt");
+
+    FileUtils::createDirectory(incPath);
+    FileUtils::createDirectory(srcPath);
+    FileUtils::writeFileContents(cmakePath,contents);
+    s_log << "\tCreating path at \""<<incPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<srcPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl<<"}"<<std::endl<<std::endl;
+}
+
+void ProjectGen::buildCMakeQtApplication()
+{
+    std::string incPath;
+    std::string srcPath;
+    std::string mainPath;
+    std::string cmakePath;
+
+    s_log << "SETTING UP QT APPLICATION"<<std::endl<<"{"<<std::endl;
+    std::string contents = FileUtils::getFileContents(m_qtAppCMakePath);
+    std::string mainContents = FileUtils::getFileContents(m_qtMainPath);
+
+    if (contents.size() == 0)
+    {
+        s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_qtAppCMakePath+"\"") << std::endl;
+        s_log.close();
+        throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_qtAppCMakePath+"\"");
+    }
+
+    if (mainContents.size() == 0)
+    {
+        s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_qtMainPath+"\"") << std::endl;
+        s_log.close();
+        throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_qtMainPath+"\"");
+    }
+
+    StringUtils::replaceInPlace(contents,"%%PROJECT_NAME%%",m_name);
+
+    incPath = FileUtils::buildFilePath(m_path,"inc");
+    srcPath = FileUtils::buildFilePath(m_path,"src");
+    cmakePath = FileUtils::buildFilePath(m_path,"CMakeLists.txt");
+    mainPath = FileUtils::buildFilePath(srcPath,"main.cpp");
+
+    FileUtils::createDirectory(incPath);
+    FileUtils::createDirectory(srcPath);
+    FileUtils::writeFileContents(cmakePath,contents);
+    FileUtils::writeFileContents(mainPath,mainContents);
+
+    s_log << "\tCreating path at \""<<incPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<srcPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<mainPath<<"\""<<std::endl<<"}"<<std::endl<<std::endl;
+}
+
+void ProjectGen::buildCMakeQtLibrary()
+{
+    std::string incPath;
+    std::string srcPath;
+    std::string cmakePath;
+    s_log << "SETTING UP QT LIBRARY"<<std::endl<<"{"<<std::endl;
+    std::string contents = FileUtils::getFileContents(m_qtLibCMakePath);
+    if (contents.size() == 0)
+    {
+        s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_qtLibCMakePath+"\"") << std::endl;
+        s_log.close();
+        throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_qtLibCMakePath+"\"");
+    }
+
+    StringUtils::replaceInPlace(contents,"%%PROJECT_NAME%%",m_name);
+    incPath = FileUtils::buildFilePath(m_path,"inc");
+    srcPath = FileUtils::buildFilePath(m_path,"src");
+    cmakePath = FileUtils::buildFilePath(m_path,"CMakeLists.txt");
+
+    FileUtils::createDirectory(incPath);
+    FileUtils::createDirectory(srcPath);
+    FileUtils::writeFileContents(cmakePath,contents);
+
+    s_log << "\tCreating path at \""<<incPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<srcPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl<<"}"<<std::endl<<std::endl;
+}
+
+void ProjectGen::buildMSVCCPPStaticLibrary()
+{
+    s_log << "SETTING UP VS STATIC LIBRARY"<<std::endl<<"{"<<std::endl;
+    std::string path = m_msvcStaticLibPath;
+    std::string contents = FileUtils::getFileContents(path);
+    if (contents.size() == 0)
+    {
+        s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \"" + path + "\"") << std::endl;
+        s_log.close();
+        throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \"" + path + "\"");
+    }
+
+    StringUtils::replaceInPlace(contents,"${PROJECT_NAME}",m_name);
+    StringUtils::replaceInPlace(contents,"${PROJECT_UUID}",StringUtils::createUUID(true));
+    std::string incPath = FileUtils::buildFilePath(m_path,"inc");
+    std::string srcPath = FileUtils::buildFilePath(m_path,"src");
+    std::string msvcPrjPath = FileUtils::buildFilePath(m_path,m_name + ".vcxproj");
+    FileUtils::createDirectory(incPath);
+    FileUtils::createDirectory(srcPath);
+    FileUtils::writeFileContents(msvcPrjPath,contents);
+    s_log << "\tCreating path at \""<<incPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<srcPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<msvcPrjPath<<"\""<<std::endl<<"}"<<std::endl<<std::endl;
+}
+
+void ProjectGen::buildMSVCCPPDynamicLibrary()
+{
+    s_log << "SETTING UP VS DYNAMIC LIBRARY"<<std::endl<<"{"<<std::endl;
+    std::string path = m_msvcDynamicLibPath;
+    std::string contents = FileUtils::getFileContents(path);
+    if (contents.size() == 0)
+    {
+        s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \"" + path + "\"") << std::endl;
+        s_log.close();
+        throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \"" + path + "\"");
+    }
+
+    StringUtils::replaceInPlace(contents,"${PROJECT_NAME}",m_name);
+    StringUtils::replaceInPlace(contents,"${PROJECT_UUID}",StringUtils::createUUID(true));
+    std::string incPath = FileUtils::buildFilePath(m_path,"inc");
+    std::string srcPath = FileUtils::buildFilePath(m_path,"src");
+    std::string msvcPrjPath = FileUtils::buildFilePath(m_path,m_name + ".vcxproj");
+    FileUtils::createDirectory(incPath);
+    FileUtils::createDirectory(srcPath);
+    FileUtils::writeFileContents(msvcPrjPath,contents);
+    s_log << "\tCreating path at \""<<incPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<srcPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<msvcPrjPath<<"\""<<std::endl<<"}"<<std::endl<<std::endl;
+}
+
+void ProjectGen::buildMSVCCPPApplication()
+{
+    s_log << "SETTING UP VS APPLICATION"<<std::endl<<"{"<<std::endl;
+    std::string path = m_msvcAppPath;
+    std::string contents = FileUtils::getFileContents(path);
+    std::string mainContents = FileUtils::getFileContents(m_cppMainPath);
+    if (contents.size() == 0)
+    {
+        s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \"" + path + "\"") << std::endl;
+        s_log.close();
+        throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \"" + path + "\"");
+    }
+
+    if (mainContents.size() == 0)
+    {
+        s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppMainPath+"\"") << std::endl;
+        s_log.close();
+        throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppMainPath+"\"");
+    }
+
+    StringUtils::replaceInPlace(contents,"${PROJECT_NAME}",m_name);
+    StringUtils::replaceInPlace(contents,"${PROJECT_UUID}",StringUtils::createUUID(true));
+    std::string incPath = FileUtils::buildFilePath(m_path,"inc");
+    std::string srcPath = FileUtils::buildFilePath(m_path,"src");
+    std::string mainPath = FileUtils::buildFilePath(srcPath,"main.cpp");
+    std::string msvcPrjPath = FileUtils::buildFilePath(m_path,m_name + ".vcxproj");
+    FileUtils::createDirectory(incPath);
+    FileUtils::createDirectory(srcPath);
+    FileUtils::writeFileContents(msvcPrjPath,contents);
+    FileUtils::writeFileContents(mainPath,contents);
+    s_log << "\tCreating path at \""<<incPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<srcPath<<"\""<<std::endl;
+    s_log << "\tCreating path at \""<<msvcPrjPath<<"\""<<std::endl<<"}"<<std::endl<<std::endl;
+    s_log << "\tCreating path at \""<<mainPath<<"\""<<std::endl<<"}"<<std::endl<<std::endl;
+}
+
 bool ProjectGen::isValidTemplatePath(const std::string &path)
 {
     m_buildCMakePath  = FileUtils::buildFilePath(path,"share/pgen/build_config.cmake");
@@ -128,11 +508,16 @@ bool ProjectGen::isValidTemplatePath(const std::string &path)
     m_cppMainPath     = FileUtils::buildFilePath(path,"share/pgen/c++_main.cpp");
     m_qtMainPath      = FileUtils::buildFilePath(path,"share/pgen/qt_main.cpp");
     m_basePath        = FileUtils::buildFilePath(path,"share/pgen/base.cmake");
+    m_msvcAppPath       = FileUtils::buildFilePath(path,"share/pgen/c++_application.msvc");
+    m_msvcSlnPath       = FileUtils::buildFilePath(path,"share/pgen/c++_solution.msvc");
+    m_msvcStaticLibPath = FileUtils::buildFilePath(path,"share/pgen/c++_static_library.msvc");
+    m_msvcDynamicLibPath = FileUtils::buildFilePath(path,"share/pgen/c++_shared_library.msvc");
 
     s_log << "Template Check at "<< path<<std::endl<<"{"<<std::endl;
-    s_log << "\tVS Solution Template Path: "<< m_vsSlnPath<<std::endl;
-    s_log << "\tVS Library Template Path: " << m_vsLibPath<<std::endl;
-    s_log << "\tVS Application Template Path: "<< m_vsAppPath<<std::endl;
+    s_log << "\tVS Solution Template Path: "<< m_msvcSlnPath<<std::endl;
+    s_log << "\tVS Dynamic Library Template Path: " << m_msvcDynamicLibPath<<std::endl;
+    s_log << "\tVS Static Library Template Path: " << m_msvcStaticLibPath<<std::endl;
+    s_log << "\tVS Application Template Path: "<< m_msvcAppPath<<std::endl;
     s_log << "\tCMake Build Template Path: "<<m_buildCMakePath<<std::endl;    
     s_log << "\tCPP Library Template Path: "<<m_cppLibCMakePath<<std::endl;
     s_log << "\tQt Library Template Path: "<<m_qtLibCMakePath<<std::endl;
@@ -142,262 +527,46 @@ bool ProjectGen::isValidTemplatePath(const std::string &path)
     s_log << "\tQt main.cpp Template Path: "<<m_qtMainPath<<std::endl;
     s_log << "\tBase project Template Path: "<<m_basePath<<std::endl;
 
-    bool hasBaseFiles           = FileUtils::fileExists(m_buildCMakePath) &&
-                                  FileUtils::fileExists(m_basePath);
-    bool hasCPPLibraryFiles     = FileUtils::fileExists(m_cppLibCMakePath);    
-    bool hasQtLibraryFiles      = FileUtils::fileExists(m_qtLibCMakePath);
-    bool hasCPPApplicationFiles = FileUtils::fileExists(m_cppMainPath) &&
-                                  FileUtils::fileExists(m_cppAppCMakePath);
-    bool hasQtApplicationFiles  = FileUtils::fileExists(m_qtMainPath) &&
-                                  FileUtils::fileExists(m_qtAppCMakePath);
-    bool hasVSSolutionFiles     = FileUtils::fileExists(m_vsSlnPath);
-    bool hasVSLibraryFiles      = FileUtils::fileExists(m_vsLibPath);
-    bool hasVSApplicationFiles  = FileUtils::fileExists(m_vsAppPath) &&
-                                  FileUtils::fileExists(m_vsSlnPath);
+    bool hasBaseFiles              = FileUtils::fileExists(m_buildCMakePath) &&
+                                     FileUtils::fileExists(m_basePath);
+    bool hasCPPLibraryFiles        = FileUtils::fileExists(m_cppLibCMakePath);
+    bool hasQtLibraryFiles         = FileUtils::fileExists(m_qtLibCMakePath);
+    bool hasCPPApplicationFiles    = FileUtils::fileExists(m_cppMainPath) &&
+                                     FileUtils::fileExists(m_cppAppCMakePath);
+    bool hasQtApplicationFiles     = FileUtils::fileExists(m_qtMainPath) &&
+                                     FileUtils::fileExists(m_qtAppCMakePath);
+    bool hasMSVCSolutionFiles      = FileUtils::fileExists(m_msvcSlnPath);
+    bool hasMSVCDynamicLibraryFiles = FileUtils::fileExists(m_msvcDynamicLibPath);
+    bool hasMSVCStaticLibraryFiles = FileUtils::fileExists(m_msvcStaticLibPath);
+    bool hasMSVCApplicationFiles   = FileUtils::fileExists(m_msvcAppPath) &&
+                                     FileUtils::fileExists(m_msvcSlnPath);
 
-    s_log <<"\n\tHAS VS SOLUTION FILES:"    << (hasVSSolutionFiles ? "TRUE" : "FALSE") << std::endl;
-    s_log <<"\n\tHAS VS LIBRARY FILES:"     << (hasVSLibraryFiles ? "TRUE" : "FALSE") << std::endl;
-    s_log <<"\n\tHAS VS APPLICATION FILES:" << (hasVSApplicationFiles ? "TRUE" : "FALSE") << std::endl;
-    s_log <<"\n\tHAS BASE FILES: "          << (hasBaseFiles ? "TRUE" : "FALSE") << std::endl;
-    s_log <<"\tHAS CPP LIBRARY FILES: "     << (hasCPPLibraryFiles ? "TRUE":"FALSE") << std::endl;
-    s_log <<"\tHAS QT LIBRARY FILES: "      << (hasQtLibraryFiles ? "TRUE":"FALSE") << std::endl;
-    s_log <<"\tHAS CPP APPLICATION FILES: " << (hasCPPApplicationFiles ? "TRUE" : "FALSE") << std::endl;
-    s_log <<"\tHAS QT APPLICATION FILES: "  << (hasQtApplicationFiles ? "TRUE" : "FALSE") << std::endl << "}" << std::endl << std::endl;
+    s_log <<"\n\tHAS VS SOLUTION FILES:"        << (hasMSVCSolutionFiles ? "TRUE" : "FALSE") << std::endl;
+    s_log <<"\n\tHAS VS STATIC LIBRARY FILES:"  << (hasMSVCStaticLibraryFiles ? "TRUE" : "FALSE") << std::endl;
+    s_log <<"\n\tHAS VS DYNAMIC LIBRARY FILES:"  << (hasMSVCDynamicLibraryFiles ? "TRUE" : "FALSE") << std::endl;
+    s_log <<"\n\tHAS VS APPLICATION FILES:"     << (hasMSVCApplicationFiles ? "TRUE" : "FALSE") << std::endl;
+    s_log <<"\n\tHAS BASE FILES: "              << (hasBaseFiles ? "TRUE" : "FALSE") << std::endl;
+    s_log <<"\tHAS CPP LIBRARY FILES: "         << (hasCPPLibraryFiles ? "TRUE":"FALSE") << std::endl;
+    s_log <<"\tHAS QT LIBRARY FILES: "          << (hasQtLibraryFiles ? "TRUE":"FALSE") << std::endl;
+    s_log <<"\tHAS CPP APPLICATION FILES: "     << (hasCPPApplicationFiles ? "TRUE" : "FALSE") << std::endl;
+    s_log <<"\tHAS QT APPLICATION FILES: "      << (hasQtApplicationFiles ? "TRUE" : "FALSE") << std::endl << "}" << std::endl << std::endl;
     return (hasBaseFiles && hasCPPLibraryFiles && hasQtLibraryFiles && hasCPPApplicationFiles && hasQtApplicationFiles);
 }
 
 void ProjectGen::buildProject()
 {
-
-    std::string incPath;
-    std::string srcPath;    
-    std::string buildPath;
-    std::string mainPath;
-    std::string cmakePath;
-    std::string productsPath;
-    std::string commonPath;
-
     switch(m_type)
     {
-        case ProjectGenType::CPP_LIBRARY:
-        {
-            s_log << "SETTING UP CPP LIBRARY"<<std::endl<<"{"<<std::endl;
-            std::string contents = FileUtils::getFileContents(m_cppLibCMakePath);
-            if (contents.size() == 0)
-            {
-                s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppLibCMakePath+"\"") << std::endl;
-                s_log.close();
-                throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppLibCMakePath+"\"");
-            }
-            StringUtils::replaceInPlace(contents,"%%PROJECT_NAME%%",m_name);
-
-            incPath = FileUtils::buildFilePath(m_path,"inc");
-            srcPath = FileUtils::buildFilePath(m_path,"src");
-            cmakePath = FileUtils::buildFilePath(m_path,"CMakeLists.txt");
-
-            FileUtils::createDirectory(incPath);
-            FileUtils::createDirectory(srcPath);
-            FileUtils::writeFileContents(cmakePath,contents);
-            s_log << "\tCreating path at \""<<incPath<<"\""<<std::endl;
-            s_log << "\tCreating path at \""<<srcPath<<"\""<<std::endl;
-            s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl<<"}"<<std::endl<<std::endl;
-
-        }
-        break;
-        case ProjectGenType::CPP_APPLICATION:
-        {
-            s_log << "SETTING UP CPP APPLICATION"<<std::endl<<"{"<<std::endl;
-            std::string contents = FileUtils::getFileContents(m_cppAppCMakePath);
-            std::string mainContents = FileUtils::getFileContents(m_cppMainPath);
-
-            if (contents.size() == 0)
-            {
-                s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppAppCMakePath+"\"") << std::endl;
-                s_log.close();
-                throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppAppCMakePath+"\"");
-            }
-
-            if (mainContents.size() == 0)
-            {
-                s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppMainPath+"\"") << std::endl;
-                s_log.close();
-                throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppMainPath+"\"");
-            }
-
-            StringUtils::replaceInPlace(contents,"%%PROJECT_NAME%%",m_name);
-
-            incPath = FileUtils::buildFilePath(m_path,"inc");
-            srcPath = FileUtils::buildFilePath(m_path,"src");
-            cmakePath = FileUtils::buildFilePath(m_path,"CMakeLists.txt");
-            mainPath = FileUtils::buildFilePath(srcPath,"main.cpp");
-
-            FileUtils::createDirectory(incPath);
-            FileUtils::createDirectory(srcPath);
-            FileUtils::writeFileContents(cmakePath,contents);
-            FileUtils::writeFileContents(mainPath,mainContents);
-
-            s_log << "\tCreating path at \""<<incPath<<"\""<<std::endl;
-            s_log << "\tCreating path at \""<<srcPath<<"\""<<std::endl;
-            s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl;
-            s_log << "\tCreating path at \""<<mainPath<<"\""<<std::endl <<"}"<< std::endl<<std::endl;
-
-        }
-        break;
-        case ProjectGenType::QT_APPLICATION:
-        {
-            s_log << "SETTING UP QT APPLICATION"<<std::endl<<"{"<<std::endl;
-            std::string contents = FileUtils::getFileContents(m_qtAppCMakePath);
-            std::string mainContents = FileUtils::getFileContents(m_qtMainPath);
-
-            if (contents.size() == 0)
-            {
-                s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_qtAppCMakePath+"\"") << std::endl;
-                s_log.close();
-                throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_qtAppCMakePath+"\"");
-            }
-
-            if (mainContents.size() == 0)
-            {
-                s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_qtMainPath+"\"") << std::endl;
-                s_log.close();
-                throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_qtMainPath+"\"");
-            }
-
-
-            StringUtils::replaceInPlace(contents,"%%PROJECT_NAME%%",m_name);
-
-            incPath = FileUtils::buildFilePath(m_path,"inc");
-            srcPath = FileUtils::buildFilePath(m_path,"src");
-            cmakePath = FileUtils::buildFilePath(m_path,"CMakeLists.txt");
-            mainPath = FileUtils::buildFilePath(srcPath,"main.cpp");
-
-            FileUtils::createDirectory(incPath);
-            FileUtils::createDirectory(srcPath);
-            FileUtils::writeFileContents(cmakePath,contents);
-            FileUtils::writeFileContents(mainPath,mainContents);
-
-            s_log << "\tCreating path at \""<<incPath<<"\""<<std::endl;
-            s_log << "\tCreating path at \""<<srcPath<<"\""<<std::endl;
-            s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl;
-            s_log << "\tCreating path at \""<<mainPath<<"\""<<std::endl<<"}"<<std::endl<<std::endl;
-
-        }
-        break;
-        case ProjectGenType::QT_LIBRARY:
-        {
-
-            s_log << "SETTING UP QT LIBRARY"<<std::endl<<"{"<<std::endl;
-            std::string contents = FileUtils::getFileContents(m_qtLibCMakePath);
-            if (contents.size() == 0)
-            {
-                s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_qtLibCMakePath+"\"") << std::endl;
-                s_log.close();
-                throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_qtLibCMakePath+"\"");
-            }
-
-            StringUtils::replaceInPlace(contents,"%%PROJECT_NAME%%",m_name);
-            incPath = FileUtils::buildFilePath(m_path,"inc");
-            srcPath = FileUtils::buildFilePath(m_path,"src");
-            cmakePath = FileUtils::buildFilePath(m_path,"CMakeLists.txt");
-
-            FileUtils::createDirectory(incPath);
-            FileUtils::createDirectory(srcPath);
-            FileUtils::writeFileContents(cmakePath,contents);
-
-            s_log << "\tCreating path at \""<<incPath<<"\""<<std::endl;
-            s_log << "\tCreating path at \""<<srcPath<<"\""<<std::endl;
-            s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl<<"}"<<std::endl<<std::endl;
-        }
-        break;
-        case ProjectGenType::CODEBASE:
-        {
-            s_log << "SETTING UP CODEBASE"<<std::endl<<"{"<<std::endl;
-            productsPath = FileUtils::buildFilePath(m_path,"products");
-            commonPath = FileUtils::buildFilePath(m_path,"common");
-            cmakePath = FileUtils::buildFilePath(m_path,"cmake");
-            FileUtils::createDirectory(productsPath);
-            FileUtils::createDirectory(commonPath);
-            FileUtils::createDirectory(cmakePath);
-
-            s_log << "\tCreating path at \""<<productsPath<<"\""<<std::endl;
-            s_log << "\tCreating path at \""<<commonPath<<"\""<<std::endl;
-            s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl;
-
-
-            std::string cmakeOutputPath = m_path;
-
-            //get template content
-
-
-            std::string buildContents = FileUtils::getFileContents(m_buildCMakePath);
-            if (buildContents.size() == 0)
-            {
-                s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_buildCMakePath+"\"") << std::endl;
-                s_log.close();
-                throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_buildCMakePath+"\"");
-            }
-
-
-            std::string baseContents = FileUtils::getFileContents(m_basePath);
-            if (baseContents.size() == 0)
-            {
-                s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_basePath+"\"") << std::endl;
-                s_log.close();
-                throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_basePath+"\"");
-            }
-
-
-            //replace with project name
-            StringUtils::replaceInPlace(buildContents,"%%PROJECT_NAME%%",m_name);
-            StringUtils::replaceInPlace(baseContents,"%%PROJECT_NAME%%",m_name);
-
-            //write contents to new path            
-            buildPath = FileUtils::buildFilePath(cmakeOutputPath,"build_config.cmake");
-            cmakePath = FileUtils::buildFilePath(m_path,"CMakeLists.txt");            
-            FileUtils::writeFileContents(buildPath,buildContents);
-            FileUtils::writeFileContents(cmakePath,baseContents);            
-            s_log << "\tCreating path at \""<<buildPath<<"\""<<std::endl;
-            s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl;
-
-
-            //create cpp project
-            std::string contents = FileUtils::getFileContents(m_cppAppCMakePath);
-            std::string mainContents = FileUtils::getFileContents(m_cppMainPath);
-
-            if (contents.size() == 0)
-            {
-                s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppAppCMakePath+"\"") << std::endl;
-                s_log.close();
-                throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppAppCMakePath+"\"");
-            }
-
-            if (mainContents.size() == 0)
-            {
-                s_log << (EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppMainPath+"\"") << std::endl;
-                s_log.close();
-                throw InvalidOperationException(EXCEPTION_TAG+"Failed to get any contents from file at \""+m_cppMainPath+"\"");
-            }
-
-
-            StringUtils::replaceInPlace(contents,"%%PROJECT_NAME%%","test_"+m_name);
-            std::string folder = FileUtils::buildFilePath(m_path,"products/test_"+m_name);
-            cmakePath = FileUtils::buildFilePath(folder,"CMakeLists.txt");
-            FileUtils::createDirectory(folder);
-            srcPath = FileUtils::buildFilePath(folder,"src");
-            incPath = FileUtils::buildFilePath(folder,"inc");
-            mainPath = FileUtils::buildFilePath(srcPath,"test_"+m_name+".cpp");
-            FileUtils::createDirectory(srcPath);
-            FileUtils::createDirectory(incPath);
-            FileUtils::writeFileContents(cmakePath,contents);
-            FileUtils::writeFileContents(mainPath,mainContents);
-            s_log << "\tCreating path at \""<<folder<<"\""<<std::endl;
-            s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl;
-            s_log << "\tCreating path at \""<<mainPath<<"\""<<std::endl<<"}"<<std::endl<<std::endl;
-        }
-        break;
-
-        default:
-            throw InvalidOperationException("Invalid type was detected for ProjectGen");
+        case ProjectGenType::MSVC_CPP_CODEBASE: buildMSVCCPPCodeBase();break;
+        case ProjectGenType::MSVC_CPP_APPLICATION: buildMSVCCPPApplication();break;
+        case ProjectGenType::MSVC_CPP_STATIC_LIBRARY: buildMSVCCPPStaticLibrary();break;
+        case ProjectGenType::MSVC_CPP_DYNAMIC_LIBRARY: buildMSVCCPPDynamicLibrary();break;
+        case ProjectGenType::CMAKE_CPP_LIBRARY: buildCMakeCPPLibrary();break;
+        case ProjectGenType::CMAKE_CPP_APPLICATION: buildCMakeCPPApplication(); break;
+        case ProjectGenType::CMAKE_QT_APPLICATION: buildCMakeQtApplication();break;
+        case ProjectGenType::CMAKE_QT_LIBRARY:buildCMakeQtLibrary();break;
+        case ProjectGenType::CMAKE_CPP_CODEBASE:buildCMakeCPPCodebase();break;
+        default: throw InvalidOperationException("Invalid type was detected for ProjectGen");
     }
 }
 
