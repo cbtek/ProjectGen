@@ -227,7 +227,7 @@ std::string FileUtils::buildFilePath(const std::string &dirPath, const std::stri
 #   ifdef __WIN32
     pathSep = "\\";
     dir = StringUtils::replace(dirPath,"/",pathSep);
-    file= StringUtils::replace(fileName,"/",pathSep);
+    file= StringUtils::replace(input_filename_string,"/",pathSep);
 #   else
     pathSep = "/";
     dir = StringUtils::replace(dirPath,"\\",pathSep);

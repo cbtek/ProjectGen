@@ -90,7 +90,7 @@ void ProjectGen::generate()
             throw InvalidOperationException(EXCEPTION_TAG+"Could not find location of template files for pgen!");
         }
     #else
-        if (isValidTemplatePath(SystemUtils::getApplicationDirectory()) ||
+        if (isValidTemplatePath(SystemUtils::getCurrentExecutableDirectory()) ||
             isValidTemplatePath(SystemUtils::getUserHomeDirectory()) ||
             isValidTemplatePath(SystemUtils::getUserAppDirectory()))
         {

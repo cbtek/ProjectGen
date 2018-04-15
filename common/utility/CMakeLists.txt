@@ -18,7 +18,7 @@ include_directories(external/tiny-process-library/inc)
 
 if (WIN32)
     set(TPL_SOURCES "external/tiny-process-library/src/process.cpp"
-                   "external/tiny-process-library/src/process_windows.cpp")
+                   "external/tiny-process-library/src/process_win.cpp")
 else(WIN32)
     set(TPL_SOURCES "external/tiny-process-library/src/process.cpp"
                    "external/tiny-process-library/src/process_unix.cpp")
