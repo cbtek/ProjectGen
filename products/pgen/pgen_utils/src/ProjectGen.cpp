@@ -122,15 +122,12 @@ void ProjectGen::buildCMakeCPPCodebase()
 {
     s_log << "SETTING UP CODEBASE"<<std::endl<<"{"<<std::endl;
     std::string productsPath = FileUtils::buildFilePath(m_path,"products");
-    std::string commonPath = FileUtils::buildFilePath(m_path,"common");
-    std::string cmakePath = FileUtils::buildFilePath(m_path,"cmake");
+    std::string commonPath = FileUtils::buildFilePath(m_path,"common");    
     FileUtils::createDirectory(productsPath);
     FileUtils::createDirectory(commonPath);
-    FileUtils::createDirectory(cmakePath);
 
     s_log << "\tCreating path at \""<<productsPath<<"\""<<std::endl;
     s_log << "\tCreating path at \""<<commonPath<<"\""<<std::endl;
-    s_log << "\tCreating path at \""<<cmakePath<<"\""<<std::endl;
 
 
     std::string cmakeOutputPath = m_path;
@@ -161,8 +158,8 @@ void ProjectGen::buildCMakeCPPCodebase()
     StringUtils::replaceInPlace(baseContents,"%%PROJECT_NAME%%",m_name);
 
     //write contents to new path
-    std::string buildPath = FileUtils::buildFilePath(cmakeOutputPath,"build_config.cmake");
-    cmakePath = FileUtils::buildFilePath(m_path,"CMakeLists.txt");
+    std::string buildPath = FileUtils::buildFilePath(cmakeOutputPath,"config.cmake");
+    std::string cmakePath = FileUtils::buildFilePath(m_path,"CMakeLists.txt");
     FileUtils::writeFileContents(buildPath,buildContents);
     FileUtils::writeFileContents(cmakePath,baseContents);
     s_log << "\tCreating path at \""<<buildPath<<"\""<<std::endl;
@@ -500,7 +497,7 @@ void ProjectGen::buildMSVCCPPApplication()
 
 bool ProjectGen::isValidTemplatePath(const std::string &path)
 {
-    m_buildCMakePath  = FileUtils::buildFilePath(path,"share/pgen/build_config.cmake");
+    m_buildCMakePath  = FileUtils::buildFilePath(path,"share/pgen/config.cmake");
     m_cppLibCMakePath = FileUtils::buildFilePath(path,"share/pgen/c++_library.cmake");
     m_qtLibCMakePath  = FileUtils::buildFilePath(path,"share/pgen/qt_library.cmake");
     m_cppAppCMakePath = FileUtils::buildFilePath(path,"share/pgen/c++_application.cmake");

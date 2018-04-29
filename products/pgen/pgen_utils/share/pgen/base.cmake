@@ -3,11 +3,7 @@
 #============================================
 cmake_minimum_required(VERSION 3.0)
 project(%%PROJECT_NAME%%)
-set(LIBRARY_TYPE STATIC)
-include(${PROJECT_SOURCE_DIR}/build_config.cmake)
-if (WIN32)
-    set (PLATFORM WIN32)
-endif()
+include(${PROJECT_SOURCE_DIR}/config.cmake)
 
 #============================================
 #Directories to include
